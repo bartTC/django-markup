@@ -1,10 +1,15 @@
 from django.conf import settings
-from django.utils.safestring import mark_safe
+from django_markup.filter import DEFAULT_MARKUP_FILTER, DEFAULT_MARKUP_CHOICES
 
 class MarkupFormatter(object):
 
-    def __init__(self):
+    def __init__(self, load_defaults=True):
         self.filter_list = {}
+
+        if load_defaults:
+            filter_list = getattr(settings, 'MARKUP_FILTER', DEFAULT_MARKUP_FILTER)
+            for filter_name, filter_class in filter_list.iteritems():
+                self.register(filter_name, filter_class)
 
     def _get_filter_title(self, filter_name):
         '''
@@ -27,23 +32,14 @@ class MarkupFormatter(object):
     def choices(self):
         '''
         Returns the filter list as a tuple. Useful for model choices.
-
-        To quickly remove a filter from the choice list, set it's is_choice
-        attribute to false:
-
-            formatter.filter_list['markdown'].is_choice = False
         '''
-        choices = []
-        for f in self.filter_list.iterkeys():
-            if getattr(self.filter_list[f], 'is_choice', False):
-                choices.append((f, self._get_filter_title(f)))
-        return choices
+        return getattr(settings, 'MARKUP_CHOICES', DEFAULT_MARKUP_CHOICES)
 
-    def register(self, filter_name, filter_func):
+    def register(self, filter_name, filter_class):
         '''
         Register a new filter for use
         '''
-        self.filter_list[filter_name] = filter_func
+        self.filter_list[filter_name] = filter_class
 
     def unregister(self, filter_name):
         '''
@@ -56,30 +52,22 @@ class MarkupFormatter(object):
         '''
         Applies text-to-HTML conversion to a string, and returns the
         HTML.
+
+        `filter` can either be a filter_name or a filter class.
         '''
+
         # Check that the filter_name is a registered markup filter
         if filter_name not in self.filter_list:
             raise ValueError("'%s' is not a registered markup filter. Registered filters are: %s." %
                              (filter_name, ', '.join(self.filter_list.iterkeys())))
+        filter_class = self.filter_list[filter_name]
 
-        filter_func = self.filter_list[filter_name]
-
-        # Get additional settings for the filter_func and apply **kwargs on it
+        # TODO: kwargs fetchen und updaten
         filter_kwargs = {}
-        filter_settings = getattr(settings, 'MARKUP_SETTINGS', None)
-        if filter_settings and filter_name in filter_settings:
-            filter_kwargs = filter_settings[filter_name]
-        filter_kwargs.update(**kwargs)
 
         # Apply the filter on text
-        text = filter_func(text, **filter_kwargs)
+        return filter_class(text).render(**filter_kwargs)
 
-        # Return a safe string unless filter_func.mark_safe is explicitly False
-        if getattr(filter_func, 'mark_safe', True):
-            return mark_safe(text)
-
-        # Otherwise return the text as is
-        return text
 
 # Unless you need to have multiple instances of MarkupFormatter lying
 # around, or want to subclass it, the easiest way to use it is to
@@ -89,8 +77,3 @@ class MarkupFormatter(object):
 # in filters are not assigned.
 
 formatter = MarkupFormatter()
-
-# Assign the built in filters to the default formatter
-from django_markup.defaults import DEFAULT_MARKUP_FILTERS
-for filter_name, filter_func in DEFAULT_MARKUP_FILTERS.items():
-    formatter.register(filter_name, filter_func)
