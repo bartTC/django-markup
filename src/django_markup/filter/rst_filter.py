@@ -13,9 +13,7 @@ class RstMarkupFilter(MarkupFilter):
     """
     title = 'reStructuredText'
 
-    def __init__(self, text):
-        self.text = text
-
+    def __init__(self):
         # Check if pygments is installed and load it's directive
         try:
             import pygments
@@ -24,9 +22,11 @@ class RstMarkupFilter(MarkupFilter):
         except ImportError:
             pass
 
-    def render(self, **kwargs):
+    def render(self, text, **kwargs):
         from docutils import core
-        parts = core.publish_parts(source=self.text, writer_name='html4css1', **kwargs)
+        publish_args = {'source': self.text, 'writer_name': 'html4css1'}
+        publish_args.update(**kwargs)
+        parts = core.publish_parts(**publish_args)
         return parts['fragment']
 
     def pygments_directive(self, name, arguments, options, content, lineno,

@@ -9,5 +9,5 @@ class LinebreaksMarkupFilter(MarkupFilter):
     """
     title = 'Linebreaks'
 
-    def render(self, **kwargs):
-        return linebreaks(self.text, **kwargs)
+    def render(self, text, **kwargs):
+        return linebreaks(text, **kwargs)

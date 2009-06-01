@@ -3,6 +3,6 @@ from django_markup.filter import MarkupFilter
 class SmartyPantsMarkupFilter(MarkupFilter):
     title = 'SmartyPants'
 
-    def render(self, **kwargs):
+    def render(self, text, **kwargs):
         from smartypants import smartyPants
-        return smartyPants(self.text, **kwargs)
+        return smartyPants(text, **kwargs)

@@ -2,16 +2,12 @@
 class MarkupFilter(object):
     """
     Abstract your new filters from this class. This is the most simplest way of
-    a filter, it accepts the text in it's __init__ method and the render method
-    returns it, as is.
+    a filter, it accepts the text in it's render method and returns it, as is.
     """
     title = 'BaseFilter'
 
-    def __init__(self, text):
-        self.text = text
-
-    def render(self):
-        return self.text
+    def render(self, text, **kwargs):
+        return text
 
 # The list of automatically loaded MarkupFilters
 from django_markup.filter.linebreaks_filter import LinebreaksMarkupFilter

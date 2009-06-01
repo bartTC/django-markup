@@ -6,18 +6,22 @@ class MarkdownMarkupFilter(MarkupFilter):
     pygments library is installed, it highlights code blocks with it.
     """
     title = 'Markdown'
+    use_pygments = False
 
-    def render(self, **kwargs):
-        from markdown import markdown
-        md_text = markdown(self.text, **kwargs)
-
+    def __init__(self):
         try:
             # Check if pygments is installed and highlight code blocks.
             import pygments
-            return self.pygmentize(md_text)
+            self.use_pygments = True
         except ImportError:
-            # Otherwise return the unhighlighted markdown'd text
-            return md_text
+            pass
+
+    def render(self, text, **kwargs):
+        from markdown import markdown
+        text = markdown(text, **kwargs)
+        if self.use_pygments:
+            text = self.pygmentize(text)
+        return text
 
     def get_lexer(self, code_string, lexer_prefix='#!'):
         """
