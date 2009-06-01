@@ -1,0 +1,30 @@
+============
+Installation
+============
+
+The easy way:
+-------------
+
+Download and install the package from the python package index (pypi)::
+
+    easy_install django-markup
+
+or if you prefer pip::
+
+    pip install django-markup
+
+Install the latest development version
+--------------------------------------
+
+The latest development version is available from GitHub. You have to install
+git_ and checkout the package with::
+
+    git clone ..pathtogit..
+
+then install it manually::
+
+    cd django-markup
+    python setup.py install
+
+Note that the development version is not fully tested and may contain bugs, so
+I prefer to use the latest package from pypi.
