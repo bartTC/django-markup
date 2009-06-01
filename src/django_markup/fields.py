@@ -8,13 +8,15 @@ class MarkupField(CharField):
     A CharField that holds the markup name for the row. In the admin it's
     displayed as a ChoiceField.
     '''
-    def __init__(self, default=None, formatter=formatter, *args, **kwargs):
+    def __init__(self, default=False, formatter=formatter, *args, **kwargs):
         # Check that the default value is a valid filter
-        if default and default not in formatter.filter_list:
-            raise ImproperlyConfigured("'%s' is not a registered markup filter. Registered filters are: %s." %
-                                      (default, ', '.join(formatter.filter_list.iterkeys())))
+        if default:
+            if default not in formatter.filter_list:
+                raise ImproperlyConfigured("'%s' is not a registered markup filter. Registered filters are: %s." %
+                                           (default, ', '.join(formatter.filter_list.iterkeys())))
+            kwargs.setdefault('default', default)
 
         kwargs.setdefault('max_length', 255)
         kwargs.setdefault('choices', formatter.choices())
         kwargs.setdefault('verbose_name', ugettext_lazy('markup'))
-        CharField.__init__(self, default, *args, **kwargs)
+        CharField.__init__(self, *args, **kwargs)

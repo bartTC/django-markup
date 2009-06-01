@@ -29,4 +29,5 @@ DEFAULT_MARKUP_CHOICES = (
     'none',
     'linebreaks',
     'markdown',
+    'restructuredtext',
 )
