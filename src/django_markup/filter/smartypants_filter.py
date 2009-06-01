@@ -4,5 +4,5 @@ class SmartyPantsMarkupFilter(MarkupFilter):
     title = 'SmartyPants'
 
     def render(self, **kwargs):
-        from smartypants import SmartyPants
-        return SmartyPants(self.text, **kwargs)
+        from smartypants import smartyPants
+        return smartyPants(self.text, **kwargs)
