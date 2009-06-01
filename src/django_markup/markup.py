@@ -62,8 +62,12 @@ class MarkupFormatter(object):
                              (filter_name, ', '.join(self.filter_list.iterkeys())))
         filter_class = self.filter_list[filter_name]
 
-        # TODO: kwargs fetchen und updaten
+        # Read global filter settings and apply it
         filter_kwargs = {}
+        filter_settings = getattr(settings, 'MARKUP_SETTINGS', {})
+        if filter_name in filter_settings:
+            filter_kwargs.update(filter_settings[filter_name])
+        filter_kwargs.update(**kwargs)
 
         # Apply the filter on text
         return filter_class(text).render(**filter_kwargs)

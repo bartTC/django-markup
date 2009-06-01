@@ -6,7 +6,6 @@ class MarkupFilter(object):
     returns it, as is.
     """
     title = 'BaseFilter'
-    is_choice = False
 
     def __init__(self, text):
         self.text = text

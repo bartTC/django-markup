@@ -4,6 +4,10 @@ from django.core.exceptions import ImproperlyConfigured
 from django_markup.markup import formatter
 
 class MarkupField(CharField):
+    '''
+    A CharField that holds the markup name for the row. In the admin it's
+    displayed as a ChoiceField.
+    '''
     def __init__(self, default=None, formatter=formatter, *args, **kwargs):
         # Check that the default value is a valid filter
         if default and default not in formatter.filter_list:
