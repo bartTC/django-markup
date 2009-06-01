@@ -53,7 +53,12 @@ class MarkdownMarkupFilter(MarkupFilter):
         Replaces naked code blocks with highlighted.
         """
         import pygments
+        from pygments import formatters
         import re
+
+        if not pygments_formatter:
+            pygments_formatter = formatters.HtmlFormatter
+
         regex = re.compile(r'(<pre><code>(.*?)</code></pre>)', re.DOTALL)
         last_end = 0
         to_return = ''

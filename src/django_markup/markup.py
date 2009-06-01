@@ -1,5 +1,5 @@
 from django.conf import settings
-from django_markup.filter import DEFAULT_MARKUP_FILTER, DEFAULT_MARKUP_CHOICES
+from django_markup.defaults import DEFAULT_MARKUP_FILTER, DEFAULT_MARKUP_CHOICES
 
 class MarkupFormatter(object):
 
@@ -33,11 +33,18 @@ class MarkupFormatter(object):
         '''
         Returns the filter list as a tuple. Useful for model choices.
         '''
-        return getattr(settings, 'MARKUP_CHOICES', DEFAULT_MARKUP_CHOICES)
+        choice_list = getattr(settings, 'MARKUP_CHOICES', DEFAULT_MARKUP_CHOICES)
+        return [(f, self._get_filter_title(f)) for f in choice_list]
 
     def register(self, filter_name, filter_class):
         '''
         Register a new filter for use
+        '''
+        self.filter_list[filter_name] = filter_class
+
+    def update(self, filter_name, filter_class):
+        '''
+        Yep, this is the same as register, it just sounds better.
         '''
         self.filter_list[filter_name] = filter_class
 
@@ -47,6 +54,12 @@ class MarkupFormatter(object):
         '''
         if filter_name in self.filter_list:
             self.filter_list.pop(filter_name)
+
+    def flush(self):
+        '''
+        Flushes the filter list.
+        '''
+        self.filter_list = {}
 
     def __call__(self, text, filter_name, **kwargs):
         '''
@@ -70,7 +83,7 @@ class MarkupFormatter(object):
         filter_kwargs.update(**kwargs)
 
         # Apply the filter on text
-        return filter_class(text).render(**filter_kwargs)
+        return filter_class().render(text, **filter_kwargs)
 
 
 # Unless you need to have multiple instances of MarkupFormatter lying

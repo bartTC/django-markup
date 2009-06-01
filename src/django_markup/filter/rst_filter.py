@@ -24,7 +24,7 @@ class RstMarkupFilter(MarkupFilter):
 
     def render(self, text, **kwargs):
         from docutils import core
-        publish_args = {'source': self.text, 'writer_name': 'html4css1'}
+        publish_args = {'source': text, 'writer_name': 'html4css1'}
         publish_args.update(**kwargs)
         parts = core.publish_parts(**publish_args)
         return parts['fragment']
