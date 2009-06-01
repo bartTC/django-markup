@@ -4,30 +4,29 @@ from django_markup.filter.markdown_filter import MarkdownMarkupFilter
 from django_markup.filter.textile_filter import TextileMarkupFilter
 from django_markup.filter.rst_filter import RstMarkupFilter
 from django_markup.filter.smartypants_filter import SmartyPantsMarkupFilter
-from django_markup.filter.raw_filter import RawMarkupFilter
+from django_markup.filter.none_filter import NoneMarkupFilter
 from django_markup.filter.creole_filter import CreoleMarkupFilter
 from django_markup.filter.lightbox_filter import LightboxMarkupFilter
 
 # MarkupFilter that get's loaded automatically
-# You can override this list within your settings.
+# You can override this list within your settings: MARKUP_FILTER
 
 DEFAULT_MARKUP_FILTER = {
     'creole': CreoleMarkupFilter,
     'linebreaks': LinebreaksMarkupFilter,
     'lightbox': LightboxMarkupFilter,
     'markdown': MarkdownMarkupFilter,
-    'none': RawMarkupFilter,
+    'none': NoneMarkupFilter,
     'restructuredtext': RstMarkupFilter,
     'smartypants': SmartyPantsMarkupFilter,
     'textile': TextileMarkupFilter,
 }
 
 # MarkupFilter that are the default value for choices, used in the MarkupField
-# You can override this list within your settings.
+# You can override this list within your settings: MARKUP_CHOICES
 
 DEFAULT_MARKUP_CHOICES = (
     'none',
     'linebreaks',
     'markdown',
-    'restructuredtext',
 )
