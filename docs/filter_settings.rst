@@ -3,7 +3,8 @@
 Overriding filter settings
 ==========================
 
-Short example::
+This section is not yet documented. Please see the sourcecode for details.
+Here is a real world example::
 
     MARKUP_SETTINGS = {
         'restructuredtext': {

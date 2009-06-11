@@ -19,7 +19,7 @@ Install the latest development version
 The latest development version is available from GitHub. You have to install
 git_ and checkout the package with::
 
-    git clone ..pathtogit..
+    git clone git://github.com/bartTC/django-markup.git
 
 then install it manually::
 
@@ -28,3 +28,5 @@ then install it manually::
 
 Note that the development version is not fully tested and may contain bugs, so
 I prefer to use the latest package from pypi.
+
+.. git: http://git-scm.com/

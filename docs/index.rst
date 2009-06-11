@@ -6,6 +6,8 @@
 Welcome to django-markup's documentation!
 =========================================
 
+django-markup is a generic app to provide filters that convert text into html.
+
 Contents:
 
 .. toctree::

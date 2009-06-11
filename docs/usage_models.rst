@@ -4,7 +4,7 @@ Usage in models
 ===============
 
 django-markup provides a ``MarkupField``, a CharField that displays a list
-of :ref:filter.
+of :ref:`filter`::
 
     from django_markup.fields import MarkupField
 
