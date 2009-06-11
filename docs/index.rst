@@ -6,7 +6,11 @@
 Welcome to django-markup's documentation!
 =========================================
 
-django-markup is a generic app to provide filters that convert text into html.
+This app is a generic way to provide filters that convert text into html.
+The idea was originally part of the `django-template-utils`_ package by James
+Bennet. I've encapsulated the markup system and expanded it into *django-markup*.
+
+.. _`django-template-utils`: http://bitbucket.org/ubernostrum/django-template-utils/
 
 Contents:
 
