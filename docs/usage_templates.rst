@@ -37,8 +37,8 @@ This results in::
 A list of all bundled filters:
 ------------------------------
 
-.. toctree:
-   :glob:
+.. toctree::
    :maxdepth: 1
+   :glob:
    
-   bundled_filters/*
+   bundled_filter/*

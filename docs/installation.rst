@@ -29,4 +29,4 @@ then install it manually::
 Note that the development version is not fully tested and may contain bugs, so
 I prefer to use the latest package from pypi.
 
-.. git: http://git-scm.com/
+.. _git: http://git-scm.com/
