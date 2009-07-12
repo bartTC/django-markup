@@ -70,7 +70,7 @@ class MarkupFormatter(object):
         '''
 
         filter_fallback = getattr(settings, 'MARKUP_FILTER_FALLBACK', False)
-        if filter_name == None and filter_fallback:
+        if not filter_name and filter_fallback:
             filter_name = filter_fallback
 
         # Check that the filter_name is a registered markup filter
