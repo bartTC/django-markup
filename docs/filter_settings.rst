@@ -3,8 +3,28 @@
 Overriding filter settings
 ==========================
 
-This section is not yet documented. Please see the sourcecode for details.
-Here is a real world example::
+Fallback filter
+---------------
+
+It's possible to set a *fallback* filter name. This filter is taken, if you
+provide no ``filter_name`` to the formatter-instance::
+
+    print formatter('This is *markdown* text', filter_name=None)
+    
+    {{ entry.content|apply_markup:"" }}
+
+In this case, add a variable in your ``settings.py`` called
+``MARKUP_FILTER_FALLBACK``::
+
+    MARKUP_FILTER_FALLBACK = 'linebreaks'
+    
+With this, the above examples would converted using the ``linebreaks`` filter.
+
+Arguments to the markup filter
+------------------------------
+
+You can pass arguments to the markup-filter itself. Here is a real world
+example::
 
     MARKUP_SETTINGS = {
         'restructuredtext': {
@@ -22,3 +42,7 @@ Here is a real world example::
             'safe_mode': True,
         }
     }
+
+With the above setting, the call of the markdown function would like::
+
+    markdown.markdown(text, safe_mode=True)
