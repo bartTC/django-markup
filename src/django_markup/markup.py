@@ -61,13 +61,17 @@ class MarkupFormatter(object):
         '''
         self.filter_list = {}
 
-    def __call__(self, text, filter_name, **kwargs):
+    def __call__(self, text, filter_name=None, **kwargs):
         '''
         Applies text-to-HTML conversion to a string, and returns the
         HTML.
 
-        `filter` can either be a filter_name or a filter class.
+        TODO: `filter` should either be a filter_name or a filter class.
         '''
+
+        filter_fallback = getattr(settings, 'MARKUP_FILTER_FALLBACK', False)
+        if filter_name == None and filter_fallback:
+            filter_name = filter_fallback
 
         # Check that the filter_name is a registered markup filter
         if filter_name not in self.filter_list:
