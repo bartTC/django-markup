@@ -4,5 +4,6 @@ class CreoleMarkupFilter(MarkupFilter):
     title = 'Creole (Wiki Syntax)'
 
     def render(self, text, **kwargs):
-        from creoleparser import creole2html
-        return creole2html(text)
+        from django_markup.bundles.WikiCreole.creole import Parser
+        from django_markup.bundles.WikiCreole.creole2html import HtmlEmitter
+        return HtmlEmitter(Parser(text).parse()).emit()
