@@ -1,0 +1,5 @@
+Martin Mahner <http://www.mahner.org/>
+
+django-markup ships with a builtin wiki creole library by Radomir Dopieralsk and
+Thomas Waldmann and was released under BSD license. See
+src/django_markup/bundles/WikiCreole for details.
