@@ -4,4 +4,4 @@ class WidontMarkupFilter(MarkupFilter):
     title = 'Widont'
 
     def render(self, text, **kwargs):
-        return '&nbsp'.join(text.rsplit(' ', 1))
+        return '&nbsp;'.join(text.strip().rsplit(' ', 1))
