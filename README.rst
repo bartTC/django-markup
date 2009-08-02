@@ -18,4 +18,4 @@ v0.3 (2009-07-29):
     
     django-markup uses the `WikiCreole library`_.
     
-.. WikiCreole library: http://devel.sheep.art.pl/creole/
+.. _WikiCreole library: http://devel.sheep.art.pl/creole/
