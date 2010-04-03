@@ -35,7 +35,7 @@ A bunch of :ref:`filter` are loaded loaded automatically in the
 ``django_markup.markup.formatter`` class. Within your settings.py you can
 define which :ref:`filter` are loaded from start. A default value would be::
 
-    from django_markup.filter.creole import CreoleMarkupFilter
+    from django_markup.filter.creole_filter import CreoleMarkupFilter
     # other filter...
     
     MARKUP_FILTER = {
