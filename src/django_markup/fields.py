@@ -20,3 +20,12 @@ class MarkupField(CharField):
         kwargs.setdefault('choices', formatter.choices())
         kwargs.setdefault('verbose_name', ugettext_lazy('markup'))
         CharField.__init__(self, *args, **kwargs)
+
+# Tell South how to freeze the MarkupField model.
+# Because MarkupField inherits from CharField and does not add any new
+# arguments, no special introspection rules are needed.
+try:
+    from south.modelsinspector import add_introspection_rules
+    add_introspection_rules([], ['django_markup\.fields\.MarkupField'])
+except ImportError:
+    pass
