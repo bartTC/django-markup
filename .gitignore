@@ -1,2 +1,3 @@
 src/test_project
 docs/_build
+*.pyc
