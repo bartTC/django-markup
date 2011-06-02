@@ -4,7 +4,7 @@ django-markup
 
 This app is a generic way to provide filters that convert text into html.
 
-The documentation is available at http://packages.python.org/django-markup/
+The documentation is available at http://readthedocs.org/docs/django-markup/en/latest/
 
 Changelog
 =========
