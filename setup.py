@@ -7,7 +7,7 @@ setup(
     long_description=open('README.rst').read(),
     author='Martin Mahner',
     author_email='martin@mahner.org',
-    url='http://github.com/bartTC/django-markup/tree/master',
+    url='http://github.com/bartTC/django-markup/',
     packages=find_packages('src'),
     package_dir = {'': 'src'},
     classifiers=[
