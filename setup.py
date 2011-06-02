@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='django-markup',
-    version='0.3.1',
+    version='0.4',
     description='A generic Django application to convert text with specific markup to html.',
     long_description=open('README.rst').read(),
     author='Martin Mahner',
