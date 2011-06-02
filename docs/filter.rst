@@ -35,8 +35,8 @@ See :ref:`formatter` how to attach a filter to a formatter class.
 A list of all bundled filters:
 ------------------------------
 
-.. toctree:
+.. toctree::
    :maxdepth: 1
+   :glob:
    
-   bundled_filters/creole
-   bundled_filters/linebreaks
+   bundled_filter/*
