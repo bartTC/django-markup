@@ -66,6 +66,7 @@ class MarkdownMarkupFilter(MarkupFilter):
         for match_obj in regex.finditer(text):
             code_string = match_obj.group(2)
             code_string, lexer = self.get_lexer(code_string)
+            code_string = code_string.replace('&gt;', '>')
             pygmented_string = pygments.highlight(code_string, lexer, pygments_formatter())
             pygmented_string = pygmented_string.replace('&amp;', '&')
             to_return = to_return + text[last_end:match_obj.start(1)] + pygmented_string
