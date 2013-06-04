@@ -1,3 +1,5 @@
+import six
+
 from django.conf import settings
 from django_markup.defaults import DEFAULT_MARKUP_FILTER, DEFAULT_MARKUP_CHOICES
 
@@ -8,7 +10,7 @@ class MarkupFormatter(object):
 
         if load_defaults:
             filter_list = getattr(settings, 'MARKUP_FILTER', DEFAULT_MARKUP_FILTER)
-            for filter_name, filter_class in filter_list.iteritems():
+            for filter_name, filter_class in six.iteritems(filter_list):
                 self.register(filter_name, filter_class)
 
     def _get_filter_title(self, filter_name):

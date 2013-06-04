@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 from django_markup.filter import MarkupFilter
 
 class RstMarkupFilter(MarkupFilter):
@@ -44,7 +46,7 @@ class RstMarkupFilter(MarkupFilter):
         except ValueError:
             lexer = lexers.TextLexer()
 
-        parsed = pygments.highlight(u'\n'.join(content), lexer, pygments_formatter())
+        parsed = pygments.highlight('\n'.join(content), lexer, pygments_formatter())
         return [nodes.raw('', parsed, format='html')]
     pygments_directive.arguments = (1, 0, 1)
     pygments_directive.content = 1
