@@ -1,3 +1,5 @@
+import six
+
 from django.db.models.fields import CharField, TextField
 from django.utils.translation import ugettext_lazy
 from django.core.exceptions import ImproperlyConfigured
@@ -13,7 +15,7 @@ class MarkupField(CharField):
         if default:
             if default not in formatter.filter_list:
                 raise ImproperlyConfigured("'%s' is not a registered markup filter. Registered filters are: %s." %
-                                           (default, ', '.join(formatter.filter_list.iterkeys())))
+                                           (default, ', '.join(six.iterkeys(formatter.filter_list))))
             kwargs.setdefault('default', default)
 
         kwargs.setdefault('max_length', 255)

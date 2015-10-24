@@ -78,7 +78,7 @@ class MarkupFormatter(object):
         # Check that the filter_name is a registered markup filter
         if filter_name not in self.filter_list:
             raise ValueError("'%s' is not a registered markup filter. Registered filters are: %s." %
-                             (filter_name, ', '.join(self.filter_list.iterkeys())))
+                             (filter_name, ', '.join(six.iterkeys(self.filter_list))))
         filter_class = self.filter_list[filter_name]
 
         # Read global filter settings and apply it
