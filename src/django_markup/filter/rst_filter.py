@@ -25,6 +25,11 @@ class RstMarkupFilter(MarkupFilter):
     def render(self, text, **kwargs):
         if kwargs:
             self.kwargs = self.kwargs.copy()
+            kwargs = kwargs.copy()
+            if 'settings_overrides' in kwargs:
+                settings_overrides = self.kwargs['settings_overrides'].copy()
+                settings_overrides.update(kwargs['settings_overrides'])
+                kwargs['settings_overrides'] = settings_overrides
             self.kwargs.update(kwargs)
         from docutils import core
         publish_args = {'source': text, 'writer_name': 'html4css1'}
