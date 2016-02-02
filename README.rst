@@ -1,5 +1,8 @@
 .. image:: https://travis-ci.org/bartTC/django-markup.svg?branch=master
+    :target: https://travis-ci.org/bartTC/django-markup
 
+.. image:: https://codecov.io/github/bartTC/django-markup/coverage.svg?branch=master
+    :target: https://codecov.io/github/bartTC/django-markup?branch=master
 
 =============
 django-markup
