@@ -26,7 +26,12 @@ with::
 
     pip install textile smartypants docutils markdown python-creole
 
-Then add `django_markup` to the `INSTALLED_APPS`.
+Then add it to the ``INSTALLED_APPS`` list::
+
+    INSTALLED_APPS = (
+        ...
+        'django_markup',
+    )
 
 Use it in the template::
 
@@ -68,7 +73,7 @@ v0.4 (2011-06-1):
     - Tested with Django 1.3
 
 v0.3 (2009-07-29):
-    django-markup now ships with a builtin creole parser. Advantage is, that 
+    django-markup now ships with a builtin creole parser. Advantage is, that
     the recently used Creoleparser library needs the Genshi lib, which needs
     a c-compiler and so on. The builtin creole parser is a pure python library
     without any dependencies and follows the wikicreole.org specifications.
