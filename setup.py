@@ -23,7 +23,7 @@ long_description = u'\n\n'.join((
 
 setup(
     name='django-markup',
-    version='1.0',
+    version='1.1a',
     description='A generic Django application to convert text with specific '
                 'markup to html.',
     long_description=long_description,
