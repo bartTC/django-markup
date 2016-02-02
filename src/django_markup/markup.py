@@ -1,7 +1,13 @@
 import six
 
 from django.conf import settings
-from django_markup.defaults import DEFAULT_MARKUP_FILTER, DEFAULT_MARKUP_CHOICES
+from django.apps import apps
+
+markup_filter = apps.get_app_config('django_markup').markup_filter
+markup_filter_fallback = apps.get_app_config('django_markup').markup_filter_fallback
+markup_choices = apps.get_app_config('django_markup').markup_choices
+markup_settings = apps.get_app_config('django_markup').markup_settings
+
 
 class MarkupFormatter(object):
 
@@ -9,8 +15,7 @@ class MarkupFormatter(object):
         self.filter_list = {}
 
         if load_defaults:
-            filter_list = getattr(settings, 'MARKUP_FILTER', DEFAULT_MARKUP_FILTER)
-            for filter_name, filter_class in six.iteritems(filter_list):
+            for filter_name, filter_class in six.iteritems(markup_filter):
                 self.register(filter_name, filter_class)
 
     def _get_filter_title(self, filter_name):
@@ -20,10 +25,10 @@ class MarkupFormatter(object):
         replaced with whitespaces and the first character of each word is
         uppercased. Example:
 
-        >>> MarkupFormatter._get_title('markdown')
+        >>> MarkupFormatter._get_filter_title('markdown')
         'Markdown'
 
-        >>> MarkupFormatter._get_title('a_cool_filter_name')
+        >>> MarkupFormatter._get_filter_title('a_cool_filter_name')
         'A Cool Filter Name'
         """
         title = getattr(self.filter_list[filter_name], 'title', None)
@@ -35,8 +40,7 @@ class MarkupFormatter(object):
         """
         Returns the filter list as a tuple. Useful for model choices.
         """
-        choice_list = getattr(settings, 'MARKUP_CHOICES', DEFAULT_MARKUP_CHOICES)
-        return [(f, self._get_filter_title(f)) for f in choice_list]
+        return [(f, self._get_filter_title(f)) for f in markup_choices]
 
     def register(self, filter_name, filter_class):
         """
@@ -70,10 +74,8 @@ class MarkupFormatter(object):
 
         TODO: `filter` should either be a filter_name or a filter class.
         """
-
-        filter_fallback = getattr(settings, 'MARKUP_FILTER_FALLBACK', False)
-        if not filter_name and filter_fallback:
-            filter_name = filter_fallback
+        if not filter_name and markup_filter_fallback:
+            filter_name = markup_filter_fallback
 
         # Check that the filter_name is a registered markup filter
         if filter_name not in self.filter_list:
@@ -83,9 +85,8 @@ class MarkupFormatter(object):
 
         # Read global filter settings and apply it
         filter_kwargs = {}
-        filter_settings = getattr(settings, 'MARKUP_SETTINGS', {})
-        if filter_name in filter_settings:
-            filter_kwargs.update(filter_settings[filter_name])
+        if markup_settings and filter_name in markup_settings:
+            filter_kwargs.update(markup_settings[filter_name])
         filter_kwargs.update(**kwargs)
 
         # Apply the filter on text
