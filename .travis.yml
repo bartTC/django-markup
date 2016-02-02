@@ -22,7 +22,7 @@ install:
   - pip install -U Django==$DJANGO
   - pip install -e .
 
-script: coverage run python runtests.py
+script: coverage run runtests.py
 
 after_success:
   - codecov
