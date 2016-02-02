@@ -14,6 +14,13 @@ class FormatterTestCase(TestCase):
     """
     Test the Formatter conversion done in Python of all shipped filters.
     """
+    def test_unregistered_filter_fails_loud(self):
+        """
+        Trying to call a unregistered filter will raise a ValueError.
+        """
+        self.assertRaises(ValueError, formatter, 'some text',
+                          filter_name='does-not-exist')
+
     def test_none_filter(self):
         text, expected = s.NONE
         result = formatter(text, filter_name='none')
