@@ -33,3 +33,9 @@ RST = (
     '*This* is some text.',
     '<div class="document">\n<p><em>This</em> is some text.</p>\n</div>\n'
 )
+
+# Simple RestructuredText
+CREOLE = (
+    'This is **some //text//**.',
+    '<p>This is <strong>some <i>text</i></strong>.</p>\n'
+)
