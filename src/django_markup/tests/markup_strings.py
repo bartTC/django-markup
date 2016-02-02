@@ -37,5 +37,5 @@ RST = (
 # Simple RestructuredText
 CREOLE = (
     'This is **some //text//**.',
-    '<p>This is <strong>some <i>text</i></strong>.</p>\n'
+    '<p>This is <strong>some <i>text</i></strong>.</p>'
 )

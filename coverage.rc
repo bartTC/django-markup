@@ -1,0 +1,13 @@
+[run]
+source = django_markup
+branch = True
+omit =
+    django_markup/tests/*
+
+[report]
+exclude_lines =
+    pragma: no cover
+    def __repr__
+
+[html]
+directory = /tmp/coverage_html_report

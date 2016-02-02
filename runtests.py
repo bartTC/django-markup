@@ -1,7 +1,11 @@
 #!/usr/bin/env python
 import sys
+import os
 
 from django.conf import settings
+
+TESTS_DIR = os.path.join(os.path.dirname(__file__),
+                         'src', 'django_markup', 'tests')
 
 SETTINGS = {
     'DATABASES': {
@@ -13,11 +17,10 @@ SETTINGS = {
     'INSTALLED_APPS': [
         'django_markup',
     ],
-    'STATIC_ROOT': '/tmp/tox/django-markup/static/',
-    'STATIC_URL': '/static/',
-    #'ROOT_URLCONF': 'django_markup.urls'
+    'TEMPLATE_DIRS': [
+        os.path.join(TESTS_DIR, 'templates')
+    ],
 }
-
 def runtests(*test_args):
     # Setup settings
     if not settings.configured:
