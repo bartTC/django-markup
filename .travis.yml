@@ -15,14 +15,14 @@ env:
 #    - master
 
 before_install:
-  - pip install codecov
+  - pip install codecov, coverage
 
 install:
   - pip install -r requirements.txt
   - pip install -U Django==$DJANGO
   - pip install -e .
 
-script: python runtests.py
+script: coverage run python runtests.py
 
 after_success:
   - codecov
