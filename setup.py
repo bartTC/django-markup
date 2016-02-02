@@ -52,7 +52,7 @@ setup(
         'six',
     ],
     tests_require=[
-        'tox>=1.6.1'
+        'tox>=1.6.1',
     ],
     cmdclass={
         'test': Tox
