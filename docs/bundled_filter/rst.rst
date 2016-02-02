@@ -12,8 +12,8 @@ This filter comes with default settings::
 
     {
         'settings_overrides': {
-            'raw_enabled': True,
-            'file_insertion_enabled': True,
+            'raw_enabled': False,
+            'file_insertion_enabled': False,
         }
     }
 

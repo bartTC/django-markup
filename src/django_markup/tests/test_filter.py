@@ -58,6 +58,20 @@ class FormatterTestCase(TestCase):
         result = formatter(text, filter_name='restructuredtext')
         self.assertEqual(result, expected)
 
+    def test_rst_raw_default(self):
+        text = open(os.path.join(FILES_DIR, 'rst_raw.txt')).read()
+        result = formatter(text, filter_name='restructuredtext')
+        self.assertIn('Other text', result)
+        self.assertNotIn('<script>', result)
+
+    def test_rst_include_default(self):
+        # Build up dynamically in order to build absolute path
+        text = (".. include:: " + os.path.join(FILES_DIR, 'rst_header.txt') +
+                "\n\nOther text\n")
+        result = formatter(text, filter_name='restructuredtext')
+        self.assertIn('Other text', result)
+        self.assertNotIn("Header 1", result)
+
     def test_creole_filter(self):
         text, expected = s.CREOLE
         result = formatter(text, filter_name='creole')
