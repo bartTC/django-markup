@@ -12,7 +12,7 @@ FILES_DIR = os.path.join(os.path.dirname(__file__), 'files')
 
 class FormatterTestCase(TestCase):
     """
-    Test the Formatter conversion done in Python.
+    Test the Formatter conversion done in Python of all shipped filters.
     """
     def test_none_filter(self):
         text, expected = s.NONE
@@ -51,8 +51,18 @@ class FormatterTestCase(TestCase):
         result = formatter(text, filter_name='restructuredtext')
         self.assertEqual(result, expected)
 
-    def test_creolefilter(self):
+    def test_creole_filter(self):
         text, expected = s.CREOLE
         result = formatter(text, filter_name='creole')
+        self.assertEqual(result, expected)
+
+    def test_smartypants_filter(self):
+        text, expected = s.SMARTYPANTS
+        result = formatter(text, filter_name='smartypants')
+        self.assertEqual(result, expected)
+
+    def test_widont_filter(self):
+        text, expected = s.WIDONT
+        result = formatter(text, filter_name='widont')
         self.assertEqual(result, expected)
 
