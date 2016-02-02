@@ -34,8 +34,30 @@ class TemplateTagTestCase(TestCase):
     """
 
     def test_markdown_filter_with_templatetag(self):
+        """
+        Test usage as a template tag:
+
+            {{ "some text"|apply_markup:"markdown" }}
+        """
         text, expected = s.MARKDOWN
-        result = render_to_string('test_markdown.html', {
+        result = render_to_string('test_templatetag.html', {
+            'text': text, 'filter': 'markdown'})
+
+        # Strip leading and trailing whitespace from the rendered HTL
+        result = result.strip()
+
+        self.assertEqual(result, expected)
+
+    def test_markdown_filter_with_templatetag_in_django_filterwrapper(self):
+        """
+        Test usage using Django's filter tag:
+
+            {% filter apply_markup:"markdown" %}
+                some text
+            {% endfilter %}
+        """
+        text, expected = s.MARKDOWN
+        result = render_to_string('test_templatetag_filterwrapper.html', {
             'text': text, 'filter': 'markdown'})
 
         # Strip leading and trailing whitespace from the rendered HTL
