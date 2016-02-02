@@ -24,6 +24,7 @@ class RstMarkupFilter(MarkupFilter):
 
     def render(self, text, **kwargs):
         if kwargs:
+            self.kwargs = self.kwargs.copy()
             self.kwargs.update(kwargs)
         from docutils import core
         publish_args = {'source': text, 'writer_name': 'html4css1'}

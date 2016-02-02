@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 import six
 import os
-from django.test import TestCase
+from django.test import TestCase, override_settings
 
 from ..markup import formatter
 from . import markup_strings as s
@@ -71,6 +71,18 @@ class FormatterTestCase(TestCase):
         result = formatter(text, filter_name='restructuredtext')
         self.assertIn('Other text', result)
         self.assertNotIn("Header 1", result)
+
+    @override_settings(MARKUP_SETTINGS={
+        'restructuredtext': {
+            'settings_overrides': {
+                'raw_enabled': True,
+            }
+        }
+    })
+    def test_rst_overriding_possible(self):
+        text = open(os.path.join(FILES_DIR, 'rst_raw.txt')).read()
+        result = formatter(text, filter_name='restructuredtext')
+        self.assertIn('<script>', result)
 
     def test_creole_filter(self):
         text, expected = s.CREOLE
