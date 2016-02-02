@@ -15,10 +15,18 @@ class RstMarkupFilter(MarkupFilter):
     """
     title = 'reStructuredText'
     rst_part_name = 'html_body'
+    kwargs = {
+        'settings_overrides': {
+            'raw_enabled': True,
+            'file_insertion_enabled': True,
+        }
+    }
 
     def render(self, text, **kwargs):
+        if kwargs:
+            self.kwargs.update(kwargs)
         from docutils import core
         publish_args = {'source': text, 'writer_name': 'html4css1'}
-        publish_args.update(**kwargs)
+        publish_args.update(**self.kwargs)
         parts = core.publish_parts(**publish_args)
         return parts[self.rst_part_name]

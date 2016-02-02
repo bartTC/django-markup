@@ -6,3 +6,16 @@ Markdown
 - Filter name: ``markdown``
 - Pypi package: ``Markdown``
 
+This filter comes with default settings::
+
+    {
+        'safe_mode': True
+    }
+
+You can override them by either subclassing the related ``MarkupFilter``
+class or using the global settings::
+
+    MARKUP_SETTINGS = {
+        'markdown': {
+            'safe_mode': True
+        }
