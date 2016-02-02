@@ -6,7 +6,6 @@ from django_markup.filter.rst_filter import RstMarkupFilter
 from django_markup.filter.smartypants_filter import SmartyPantsMarkupFilter
 from django_markup.filter.none_filter import NoneMarkupFilter
 from django_markup.filter.creole_filter import CreoleMarkupFilter
-from django_markup.filter.lightbox_filter import LightboxMarkupFilter
 from django_markup.filter.widont_filter import WidontMarkupFilter
 
 # MarkupFilter that get's loaded automatically
@@ -15,7 +14,6 @@ from django_markup.filter.widont_filter import WidontMarkupFilter
 DEFAULT_MARKUP_FILTER = {
     'creole': CreoleMarkupFilter,
     'linebreaks': LinebreaksMarkupFilter,
-    'lightbox': LightboxMarkupFilter,
     'markdown': MarkdownMarkupFilter,
     'none': NoneMarkupFilter,
     'restructuredtext': RstMarkupFilter,

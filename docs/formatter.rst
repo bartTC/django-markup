@@ -41,7 +41,6 @@ define which :ref:`filter` are loaded from start. A default value would be::
     MARKUP_FILTER = {
         'creole': CreoleMarkupFilter,
         'linebreaks': LinebreaksMarkupFilter,
-        'lightbox': LightboxMarkupFilter,
         'markdown': MarkdownMarkupFilter,
         'none': NoneMarkupFilter,
         'restructuredtext': RstMarkupFilter,
