@@ -4,7 +4,7 @@ Creole Wiki Syntax
 ==================
 
 - Filter name: ``creole``
-- Provided with django-markup
+- Pypi package: ``python-creole``
 
 This is a Python implementation of a parser for the Creole_
 wiki markup language.

@@ -2,7 +2,7 @@ Linebreaks
 ==========
 
 - Filter name: ``linebreaks``
-- Provided through Django 1.0+
+- Provided by Django v1.0+
 
 The ``linebreaks`` filter replaces line breaks in plain text with
 appropriate HTML; a single newline becomes an HTML line break (``<br />``) and

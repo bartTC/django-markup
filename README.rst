@@ -6,6 +6,32 @@ This app is a generic way to provide filters that convert text into html.
 
 The documentation is available at http://readthedocs.org/docs/django-markup/en/latest/
 
+Quickstart
+==========
+
+Download and install the package from the python package index (pypi)::
+
+    pip install django-markup
+
+Note that `django-markup` ships with some filters ready to use, but the
+requirements of those filters are not installed by default! If you want to
+use all of the filters right away, you can install their latest packages
+with::
+
+    pip install textile smartypants docutils markdown python-creole
+
+Then add `django_markup` to the `INSTALLED_APPS`.
+
+Use it in the template::
+
+    {% load markup_tags %}
+    {{ the_text|apply_markup:"markdown" }}
+
+Or in Python code:
+
+    from django_markup.markup import formatter
+    formatter('Some *Markdown* text.', filter_name='markdown')
+
 Testsuite
 =========
 
@@ -17,17 +43,16 @@ For a specific local installation run `python runtests.py`.
 Changelog
 =========
 
-v1.0 (in development):
+v1.0 (2016-01-02):
     - Removed some 5 year old dust
     - Django 1.8+ compatible
     - Tests
 
-    Possibly backwards incompatible changes:
+    Backwards incompatible changes:
 
+    - Removed Pygments highlighting in the Markdown and RestructuredText filter.
     - Removed CreoleParser library in favor of a pypi package.
     - Removed Lightbox filter.
-    - Removed (automagic) Pygments highlighting in the Markdown and
-      RestructuredText filter.
     - The RestructuredText filter now renders level 1 and 2 headers.
       See Github `Issue 14`_ for details and a backwards compatible workaround.
 
