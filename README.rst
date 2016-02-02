@@ -27,7 +27,7 @@ Use it in the template::
     {% load markup_tags %}
     {{ the_text|apply_markup:"markdown" }}
 
-Or in Python code:
+Or in Python code::
 
     from django_markup.markup import formatter
     formatter('Some *Markdown* text.', filter_name='markdown')
