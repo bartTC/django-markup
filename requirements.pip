@@ -1,1 +1,9 @@
+# -----------------------------------------------------------------------------
+# These requirements are only required for local testing or development.
+# To use django-markup it's enough to install the package, and only the
+# necessary packages of each of your used filter.
+# -----------------------------------------------------------------------------
+
+django==1.9.2
+
 six
