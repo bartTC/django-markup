@@ -1,3 +1,6 @@
+.. image:: https://travis-ci.org/bartTC/django-markup.svg?branch=master
+
+
 =============
 django-markup
 =============
