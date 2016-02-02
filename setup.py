@@ -32,6 +32,11 @@ setup(
     url='http://github.com/bartTC/django-markup/',
     packages=find_packages('src'),
     package_dir = {'': 'src'},
+    package_data={
+        'django_markup': ['tests/files/*'],
+        'docs': ['*'],
+    },
+    zip_safe=False,
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Web Environment',
@@ -42,11 +47,6 @@ setup(
         'Programming Language :: Python :: 3',
         'Framework :: Django',
     ],
-    package_data={
-        'django_markup': [],
-        'docs': ['*'],
-    },
-    zip_safe=False,
     install_requires=[
         'django>=1.4',
         'six',

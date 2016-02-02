@@ -14,6 +14,7 @@ class RstMarkupFilter(MarkupFilter):
             return 'foo'
     """
     title = 'reStructuredText'
+    rst_part_name = 'html_body'
 
     def __init__(self):
         # Check if pygments is installed and load it's directive
@@ -29,7 +30,7 @@ class RstMarkupFilter(MarkupFilter):
         publish_args = {'source': text, 'writer_name': 'html4css1'}
         publish_args.update(**kwargs)
         parts = core.publish_parts(**publish_args)
-        return parts['fragment']
+        return parts[self.rst_part_name]
 
     def pygments_directive(self, name, arguments, options, content, lineno,
                            content_offset, block_text, state, state_machine,
