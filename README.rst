@@ -9,9 +9,16 @@ The documentation is available at http://readthedocs.org/docs/django-markup/en/l
 Changelog
 =========
 
+v1.0 (in development):
+    - Removed some 5 year old dust
+    - Removed CreoleParser library in favor of a pypi package
+    - Django 1.8+ compatible
+    - Tests
+
 v0.4 (2011-06-1):
-    Added a widont filter. MarkupField is South compatible. Tested with 
-    Django 1.3.
+    - Added a widont filter
+    - MarkupField is South compatible.
+    - Tested with Django 1.3
 
 v0.3 (2009-07-29):
     django-markup now ships with a builtin creole parser. Advantage is, that 

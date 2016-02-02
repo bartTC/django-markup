@@ -14,7 +14,7 @@ class MarkupFormatter(object):
                 self.register(filter_name, filter_class)
 
     def _get_filter_title(self, filter_name):
-        '''
+        """
         Returns the human readable title of a given filter_name. If no title
         attribute is set, the filter_name is used, where underscores are
         replaced with whitespaces and the first character of each word is
@@ -25,51 +25,51 @@ class MarkupFormatter(object):
 
         >>> MarkupFormatter._get_title('a_cool_filter_name')
         'A Cool Filter Name'
-        '''
+        """
         title = getattr(self.filter_list[filter_name], 'title', None)
         if not title:
             title = ' '.join([w.title() for w in filter_name.split('_')])
         return title
 
     def choices(self):
-        '''
+        """
         Returns the filter list as a tuple. Useful for model choices.
-        '''
+        """
         choice_list = getattr(settings, 'MARKUP_CHOICES', DEFAULT_MARKUP_CHOICES)
         return [(f, self._get_filter_title(f)) for f in choice_list]
 
     def register(self, filter_name, filter_class):
-        '''
+        """
         Register a new filter for use
-        '''
+        """
         self.filter_list[filter_name] = filter_class
 
     def update(self, filter_name, filter_class):
-        '''
+        """
         Yep, this is the same as register, it just sounds better.
-        '''
+        """
         self.filter_list[filter_name] = filter_class
 
     def unregister(self, filter_name):
-        '''
+        """
         Unregister a filter from the filter list
-        '''
+        """
         if filter_name in self.filter_list:
             self.filter_list.pop(filter_name)
 
     def flush(self):
-        '''
+        """
         Flushes the filter list.
-        '''
+        """
         self.filter_list = {}
 
     def __call__(self, text, filter_name=None, **kwargs):
-        '''
+        """
         Applies text-to-HTML conversion to a string, and returns the
         HTML.
 
         TODO: `filter` should either be a filter_name or a filter class.
-        '''
+        """
 
         filter_fallback = getattr(settings, 'MARKUP_FILTER_FALLBACK', False)
         if not filter_name and filter_fallback:

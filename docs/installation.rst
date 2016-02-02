@@ -7,10 +7,6 @@ The easy way:
 
 Download and install the package from the python package index (pypi)::
 
-    easy_install django-markup
-
-or if you prefer pip::
-
     pip install django-markup
 
 Install the latest development version
