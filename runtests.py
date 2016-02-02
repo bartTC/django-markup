@@ -3,6 +3,7 @@ import sys
 import os
 
 from django.conf import settings
+from django import setup
 
 TESTS_DIR = os.path.join(os.path.dirname(__file__),
                          'src', 'django_markup', 'tests')
@@ -21,17 +22,13 @@ SETTINGS = {
         os.path.join(TESTS_DIR, 'templates')
     ],
 }
+
 def runtests(*test_args):
     # Setup settings
     if not settings.configured:
         settings.configure(**SETTINGS)
 
-    # New Django 1.7 app registry setup
-    try:
-        from django import setup
-        setup()
-    except ImportError:
-        pass
+    setup()
 
     # New Django 1.8 test runner
     try:
