@@ -17,8 +17,8 @@ class RstMarkupFilter(MarkupFilter):
     rst_part_name = 'html_body'
     kwargs = {
         'settings_overrides': {
-            'raw_enabled': True,
-            'file_insertion_enabled': True,
+            'raw_enabled': False,
+            'file_insertion_enabled': False,
         }
     }
 
