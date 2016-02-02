@@ -24,9 +24,12 @@ v1.0 (in development):
 
     Possibly backwards incompatible changes:
 
-    - Removed CreoleParser library in favor of a pypi package
+    - Removed CreoleParser library in favor of a pypi package.
+    - Removed Lightbox filter.
+    - Removed (automagic) Pygments highlighting in the Markdown and
+      RestructuredText filter.
     - The RestructuredText filter now renders level 1 and 2 headers.
-      See `Issue 14`_.
+      See Github `Issue 14`_ for details and a backwards compatible workaround.
 
 v0.4 (2011-06-1):
     - Added a widont filter
