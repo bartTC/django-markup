@@ -19,3 +19,4 @@ class or using the global settings::
         'markdown': {
             'safe_mode': True
         }
+    }
