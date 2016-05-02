@@ -54,6 +54,11 @@ For a specific local installation run `python runtests.py`.
 Changelog
 =========
 
+v1.1 (2016-05-02):
+    - The Markdown filter has the ``safe_mode`` option enabled by default.
+    - The RestructuredText filter has the file and raw content inclusion
+      disabled by default.
+
 v1.0 (2016-01-02):
     - Removed some 5 year old dust
     - Django 1.8+ compatible
