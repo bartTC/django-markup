@@ -36,6 +36,12 @@ class FormatterTestCase(TestCase):
         result = formatter(text, filter_name='markdown')
         self.assertEqual(result, expected)
 
+    def test_markdown_safemode_enabled_by_default(self):
+        """Safe mode is enabled by default."""
+        text, expected = s.MARKDOWN_JS_LINK
+        result = formatter(text, filter_name='markdown')
+        self.assertEqual(result, expected)
+
     def test_textile_filter(self):
         text, expected = s.TEXTILE
         result = formatter(text, filter_name='textile')
@@ -59,12 +65,14 @@ class FormatterTestCase(TestCase):
         self.assertEqual(result, expected)
 
     def test_rst_raw_default(self):
+        """Raw file inclusion is disabled by default."""
         text = open(os.path.join(FILES_DIR, 'rst_raw.txt')).read()
         result = formatter(text, filter_name='restructuredtext')
         self.assertIn('Other text', result)
         self.assertNotIn('<script>', result)
 
     def test_rst_include_default(self):
+        """File inclusion is disabled by default."""
         # Build up dynamically in order to build absolute path
         text = (".. include:: " + os.path.join(FILES_DIR, 'rst_header.txt') +
                 "\n\nOther text\n")
@@ -86,4 +94,3 @@ class FormatterTestCase(TestCase):
         text, expected = s.WIDONT
         result = formatter(text, filter_name='widont')
         self.assertEqual(result, expected)
-
