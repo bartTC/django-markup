@@ -19,6 +19,7 @@ class Tox(TestCommand):
 
 long_description = u'\n\n'.join((
     open('README.rst').read(),
+    open('CHANGELOG.rst').read(),
 ))
 
 setup(
