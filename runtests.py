@@ -18,8 +18,21 @@ SETTINGS = {
     'INSTALLED_APPS': [
         'django_markup',
     ],
-    'TEMPLATE_DIRS': [
-        os.path.join(TESTS_DIR, 'templates')
+    'TEMPLATES': [
+        {
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'DIRS': [
+                os.path.join(TESTS_DIR, 'templates'),
+            ],
+            'APP_DIRS': True,
+            'OPTIONS': {
+                'context_processors': [
+                    'django.template.context_processors.debug',
+                    'django.template.context_processors.request',
+                    'django.template.context_processors.i18n',
+                ],
+            },
+        },
     ],
 }
 
