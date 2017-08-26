@@ -75,3 +75,4 @@ using the ``unregister`` method with it's filter name::
 
     from django_markup.markup import formatter
     formatter.unregister('uppercase')
+

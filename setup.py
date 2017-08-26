@@ -55,7 +55,7 @@ setup(
     tests_require=[
         'tox>=1.6.1',
     ],
-    extras_require = {
+    extras_require={
         'all-filter-dependencies': [
             'textile==2.3.16',
             'smartypants==2.0.0',
@@ -63,6 +63,7 @@ setup(
             'pygments==2.2.0',
             'markdown==2.6.9',
             'python-creole==1.3.1',
+            'pygments==2.2.0',
         ]
     },
     cmdclass={
