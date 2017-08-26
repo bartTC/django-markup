@@ -1,6 +1,13 @@
 Changelog
 =========
 
+
+v1.3 (2017-08-26):
+------------------
+
+- The package setup script now provides the ability to install all filter
+  dependencies automatically. See the installation Readme for details.
+
 v1.2 (2017-03-18):
 ------------------
 

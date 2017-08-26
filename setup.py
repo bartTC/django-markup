@@ -57,13 +57,13 @@ setup(
     ],
     extras_require={
         'all-filter-dependencies': [
-            'textile==2.3.16',
-            'smartypants==2.0.0',
-            'docutils==0.14',
-            'pygments==2.2.0',
-            'markdown==2.6.9',
-            'python-creole==1.3.1',
-            'pygments==2.2.0',
+            'textile>=2.3.16',
+            'smartypants>=2.0.0',
+            'docutils>=0.14',
+            'pygments>=2.2.0',
+            'markdown>=2.6.9',
+            'python-creole>=1.3.1',
+            'pygments>=2.2.0',
         ]
     },
     cmdclass={
