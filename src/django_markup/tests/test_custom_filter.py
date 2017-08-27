@@ -6,7 +6,11 @@ from django.test import TestCase
 
 from django_markup.filter import MarkupFilter
 from django_markup.markup import formatter
+from django_markup.apps import DjangoMarkupConfig
 
+
+class MyCustomDjangoMarkupConfig(DjangoMarkupConfig):
+    markup_filter_fallback = 'uppercase'
 
 class UppercaseMarkupFilter(MarkupFilter):
     """
@@ -75,6 +79,8 @@ class CustomMarkupFilterTestCase(TestCase):
 
         formatter.register('uppercase', UppercaseMarkupFilter)
 
-        with self.settings(MARKUP_FILTER_FALLBACK='uppercase'):
-            result = formatter('This is some text', filter_name=None)
-            self.assertEqual(result, 'THIS IS SOME TEXT')
+        # FIXME: Need to replace app config with MyCustomDjangoMarkupConfig
+        #        or find a clean way to set app config at runtime.
+    
+        result = formatter('This is some text', filter_name=None)
+        self.assertEqual(result, 'THIS IS SOME TEXT')
