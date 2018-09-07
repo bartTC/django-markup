@@ -2,9 +2,11 @@ Changelog
 =========
 
 
-v1.3 (2017-08-26):
+v1.3 (2018-09-07):
 ------------------
 
+- Python 3.6 and 3.7 compatibility and tests.
+- Django 2.0 and 2.1 compatibility and tests.
 - The package setup script now provides the ability to install all filter
   dependencies automatically. See the installation Readme for details.
 

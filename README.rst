@@ -10,7 +10,7 @@ django-markup
 
 This app is a generic way to provide filters that convert text into html.
 
-The documentation is available at http://readthedocs.org/docs/django-markup/en/latest/
+The documentation is available at https://docs.elephant.house/django-markup/
 
 Quickstart
 ==========
@@ -48,7 +48,7 @@ Or in Python code::
 Testsuite
 =========
 
-To run the testsuite simply run `python setup.py test` which will invoke a Tox
+To run the testsuite simply run ``python setup.py test`` which will invoke a Tox
 collection testing against various Python and Django versions.
 
-For a specific local installation run `python runtests.py`.
+For a specific local installation run ``python runtests.py``.

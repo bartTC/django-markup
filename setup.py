@@ -24,7 +24,7 @@ long_description = u'\n\n'.join((
 
 setup(
     name='django-markup',
-    version='1.3a',
+    version='1.3',
     description='A generic Django application to convert text with specific '
                 'markup to html.',
     long_description=long_description,
@@ -64,7 +64,7 @@ setup(
             'markdown>=2.6.9',
             'python-creole>=1.3.1',
             'pygments>=2.2.0',
-        ]
+        ],
     },
     cmdclass={
         'test': Tox
