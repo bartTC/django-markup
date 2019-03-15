@@ -1,11 +1,11 @@
 from __future__ import unicode_literals
 
-import six
 import os
+
 from django.test import TestCase
 
-from ..markup import formatter
 from . import markup_strings as s
+from ..markup import formatter
 
 FILES_DIR = os.path.join(os.path.dirname(__file__), 'files')
 
@@ -14,12 +14,14 @@ class FormatterTestCase(TestCase):
     """
     Test the Formatter conversion done in Python of all shipped filters.
     """
+
     def test_unregistered_filter_fails_loud(self):
         """
         Trying to call a unregistered filter will raise a ValueError.
         """
-        self.assertRaises(ValueError, formatter, 'some text',
-                          filter_name='does-not-exist')
+        self.assertRaises(
+            ValueError, formatter, 'some text', filter_name='does-not-exist'
+        )
 
     def test_none_filter(self):
         text, expected = s.NONE
@@ -60,7 +62,9 @@ class FormatterTestCase(TestCase):
         :see: https://github.com/bartTC/django-markup/issues/14
         """
         text = open(os.path.join(FILES_DIR, 'rst_header.txt')).read()
-        expected = open(os.path.join(FILES_DIR, 'rst_header_expected.txt')).read()
+        expected = open(
+            os.path.join(FILES_DIR, 'rst_header_expected.txt')
+        ).read()
         result = formatter(text, filter_name='restructuredtext')
         self.assertEqual(result, expected)
 
@@ -70,7 +74,9 @@ class FormatterTestCase(TestCase):
         directive in reStructredText to highlight code snippets.
         """
         text = open(os.path.join(FILES_DIR, 'rst_with_pygments.txt')).read()
-        expected = open(os.path.join(FILES_DIR, 'rst_with_pygments_expected.txt')).read()
+        expected = open(
+            os.path.join(FILES_DIR, 'rst_with_pygments_expected.txt')
+        ).read()
         result = formatter(text, filter_name='restructuredtext')
         self.assertEqual(result, expected)
 
@@ -84,8 +90,11 @@ class FormatterTestCase(TestCase):
     def test_rst_include_default(self):
         """File inclusion is disabled by default."""
         # Build up dynamically in order to build absolute path
-        text = (".. include:: " + os.path.join(FILES_DIR, 'rst_header.txt') +
-                "\n\nOther text\n")
+        text = (
+            ".. include:: "
+            + os.path.join(FILES_DIR, 'rst_header.txt')
+            + "\n\nOther text\n"
+        )
         result = formatter(text, filter_name='restructuredtext')
         self.assertIn('Other text', result)
         self.assertNotIn("Header 1", result)

@@ -1,5 +1,6 @@
 from django_markup.filter import MarkupFilter
 
+
 class WidontMarkupFilter(MarkupFilter):
     title = 'Widont'
 

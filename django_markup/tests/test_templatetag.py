@@ -1,13 +1,10 @@
 from __future__ import unicode_literals
 
-import six
-import os
-
 from django.template.loader import render_to_string
 from django.test import TestCase
-from ..templatetags.markup_tags import apply_markup
 
 from . import markup_strings as s
+from ..templatetags.markup_tags import apply_markup
 
 
 class PythonTemplateTagTestCase(TestCase):
@@ -17,6 +14,7 @@ class PythonTemplateTagTestCase(TestCase):
     No need to test all filters here, since their low level routines are
     covered in `test_filter`.
     """
+
     def test_none_filter(self):
         text, expected = s.NONE
         result = apply_markup(text, 'none')
@@ -40,8 +38,9 @@ class TemplateTagTestCase(TestCase):
             {{ "some text"|apply_markup:"markdown" }}
         """
         text, expected = s.MARKDOWN
-        result = render_to_string('test_templatetag.html', {
-            'text': text, 'filter': 'markdown'})
+        result = render_to_string(
+            'test_templatetag.html', {'text': text, 'filter': 'markdown'}
+        )
 
         # Strip leading and trailing whitespace from the rendered HTL
         result = result.strip()
@@ -57,8 +56,10 @@ class TemplateTagTestCase(TestCase):
             {% endfilter %}
         """
         text, expected = s.MARKDOWN
-        result = render_to_string('test_templatetag_filterwrapper.html', {
-            'text': text, 'filter': 'markdown'})
+        result = render_to_string(
+            'test_templatetag_filterwrapper.html',
+            {'text': text, 'filter': 'markdown'},
+        )
 
         # Strip leading and trailing whitespace from the rendered HTL
         result = result.strip()

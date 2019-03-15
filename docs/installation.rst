@@ -2,9 +2,6 @@
 Installation
 ============
 
-The easy way:
--------------
-
 Download and install the package from the python package index (pypi):
 
 .. sourcecode::

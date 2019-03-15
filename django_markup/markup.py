@@ -1,15 +1,19 @@
+from django.conf import settings
+
 import six
 
-from django.conf import settings
-from django_markup.defaults import DEFAULT_MARKUP_FILTER, DEFAULT_MARKUP_CHOICES
+from django_markup.defaults import (DEFAULT_MARKUP_CHOICES,
+                                    DEFAULT_MARKUP_FILTER)
+
 
 class MarkupFormatter(object):
-
     def __init__(self, load_defaults=True):
         self.filter_list = {}
 
         if load_defaults:
-            filter_list = getattr(settings, 'MARKUP_FILTER', DEFAULT_MARKUP_FILTER)
+            filter_list = getattr(
+                settings, 'MARKUP_FILTER', DEFAULT_MARKUP_FILTER
+            )
             for filter_name, filter_class in six.iteritems(filter_list):
                 self.register(filter_name, filter_class)
 
@@ -35,7 +39,9 @@ class MarkupFormatter(object):
         """
         Returns the filter list as a tuple. Useful for model choices.
         """
-        choice_list = getattr(settings, 'MARKUP_CHOICES', DEFAULT_MARKUP_CHOICES)
+        choice_list = getattr(
+            settings, 'MARKUP_CHOICES', DEFAULT_MARKUP_CHOICES
+        )
         return [(f, self._get_filter_title(f)) for f in choice_list]
 
     def register(self, filter_name, filter_class):
@@ -77,8 +83,10 @@ class MarkupFormatter(object):
 
         # Check that the filter_name is a registered markup filter
         if filter_name not in self.filter_list:
-            raise ValueError("'%s' is not a registered markup filter. Registered filters are: %s." %
-                             (filter_name, ', '.join(six.iterkeys(self.filter_list))))
+            raise ValueError(
+                "'%s' is not a registered markup filter. Registered filters are: %s."
+                % (filter_name, ', '.join(six.iterkeys(self.filter_list)))
+            )
         filter_class = self.filter_list[filter_name]
 
         # Read global filter settings and apply it

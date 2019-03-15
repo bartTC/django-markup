@@ -1,7 +1,5 @@
 from __future__ import unicode_literals
 
-import os
-
 from django.test import TestCase
 
 from django_markup.filter import MarkupFilter
@@ -12,6 +10,7 @@ class UppercaseMarkupFilter(MarkupFilter):
     """
     Custom filter that makes all the text uppercase.
     """
+
     title = 'UppercaseFilter'
 
     def render(self, text, **kwargs):
@@ -22,6 +21,7 @@ class LowercaseMarkupFilter(MarkupFilter):
     """
     Custom filter that makes all the text lowercase.
     """
+
     title = 'LowercaseFilter'
 
     def render(self, text, **kwargs):
@@ -32,6 +32,7 @@ class CustomMarkupFilterTestCase(TestCase):
     """
     Test the registration/unregistration of a custom filter.
     """
+
     def test_register_filter(self):
         """
         Register the filter, and its wildly available.
@@ -62,16 +63,18 @@ class CustomMarkupFilterTestCase(TestCase):
         formatter.register('uppercase', UppercaseMarkupFilter)
         formatter.unregister('uppercase')
 
-        self.assertRaises(ValueError, formatter, 'This is some text',
-                          filter_name='uppercase')
+        self.assertRaises(
+            ValueError, formatter, 'This is some text', filter_name='uppercase'
+        )
 
     def test_fallback_filter(self):
         """
         You can call the formatter without a `filter_name` as long as a
         `MARKUP_FILTER_FALLBACK` setting is set.
         """
-        self.assertRaises(ValueError, formatter, 'This is some text',
-                          filter_name=None)
+        self.assertRaises(
+            ValueError, formatter, 'This is some text', filter_name=None
+        )
 
         formatter.register('uppercase', UppercaseMarkupFilter)
 

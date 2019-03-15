@@ -1,5 +1,7 @@
 from django.template.defaultfilters import linebreaks
+
 from django_markup.filter import MarkupFilter
+
 
 class LinebreaksMarkupFilter(MarkupFilter):
     """
@@ -7,6 +9,7 @@ class LinebreaksMarkupFilter(MarkupFilter):
     newline becomes an HTML line break (``<br />``) and a new line
     followed by a blank line becomes a paragraph break (``</p>``).
     """
+
     title = 'Linebreaks'
 
     def render(self, text, **kwargs):
