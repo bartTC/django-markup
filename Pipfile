@@ -1,0 +1,18 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django-markup = {editable = true,extras = ["all_filter_dependencies"],path = "."}
+
+[dev-packages]
+isort = "*"
+black = "*"
+coverage = "*"
+
+[scripts]
+cleanup = "sh -c \"black --skip-string-normalization --line-length=80 --exclude='/(migrations)/' django_markup && isort -rc django_markup\""
+
+[pipenv]
+allow_prereleases = true

@@ -5,8 +5,7 @@ import os
 from django.conf import settings
 from django import setup
 
-TESTS_DIR = os.path.join(os.path.dirname(__file__),
-                         'src', 'django_markup', 'tests')
+TESTS_DIR = os.path.join(os.path.dirname(__file__), 'django_markup', 'tests')
 
 SETTINGS = {
     'DATABASES': {

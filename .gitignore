@@ -1,4 +1,4 @@
 *.pyc
 .eggs
+*.egg-info
 docs/_build
-src/django_markup.egg-info
