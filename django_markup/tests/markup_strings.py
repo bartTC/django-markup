@@ -15,7 +15,7 @@ MARKDOWN = ('*This* is some text.', '<p><em>This</em> is some text.</p>')
 # Simple Markdown
 MARKDOWN_JS_LINK = (
     '[Javascript Link](javascript:alert("123");)',
-    '<p><a href="">Javascript Link</a></p>',
+    '<p><a title="123">Javascript Link</a>;)</p>',
 )
 
 # Simple Textile

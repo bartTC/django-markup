@@ -14,6 +14,19 @@
         ]
     },
     "default": {
+        "bleach": {
+            "hashes": [
+                "sha256:213336e49e102af26d9cde77dd2d0397afabc5a6bf2fed985dc35b5d1e285a16",
+                "sha256:3fdf7f77adcf649c9911387df51254b813185e32b2c6619f690b593a617e19fa"
+            ],
+            "version": "==3.1.0"
+        },
+        "bleach-whitelist": {
+            "hashes": [
+                "sha256:74b81d0c8dedec80f845eceaa1d54077b99167532279fbaf883486599e0d82e4"
+            ],
+            "version": "==0.0.9"
+        },
         "django": {
             "hashes": [
                 "sha256:58819ca72a13b963c16383687421261657abe5754aad9ad66166a921dd17559f",
