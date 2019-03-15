@@ -8,10 +8,10 @@ from django_markup.markup import formatter
 
 
 class MarkupField(CharField):
-    '''
+    """
     A CharField that holds the markup name for the row. In the admin it's
     displayed as a ChoiceField.
-    '''
+    """
 
     def __init__(self, default=False, formatter=formatter, *args, **kwargs):
         # Check that the default value is a valid filter
@@ -28,13 +28,3 @@ class MarkupField(CharField):
         kwargs.setdefault('verbose_name', ugettext_lazy('markup'))
         CharField.__init__(self, *args, **kwargs)
 
-
-# Tell South how to freeze the MarkupField model.
-# Because MarkupField inherits from CharField and does not add any new
-# arguments, no special introspection rules are needed.
-try:
-    from south.modelsinspector import add_introspection_rules
-
-    add_introspection_rules([], ['django_markup\.fields\.MarkupField'])
-except ImportError:
-    pass
