@@ -26,7 +26,7 @@ Please refer the docs which packages are used for the built-in filter.
 An alternative is to install django-markup with all filter dependencies
 right away. Do so with::
 
-    $ pip install django-markup[all-filter-dependencies]
+    $ pip install django-markup[all_filter_dependencies]
 
 Then add it to the ``INSTALLED_APPS`` list::
 
