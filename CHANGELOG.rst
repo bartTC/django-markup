@@ -1,6 +1,14 @@
 Changelog
 =========
 
+v1.4 (2019-03-15):
+------------------
+
+- Markdown's safe_mode was deprecated and no longer functional, it's behavior
+  was replaced with bleach_.
+- Pipfile support for local development and general code cleanup.
+
+.. _bleach: https://github.com/mozilla/bleach
 
 v1.3 (2018-09-07):
 ------------------
