@@ -17,7 +17,7 @@ Quickstart
 
 Download and install the package from the python package index (pypi)::
 
-    pip install django-markup
+    $ pip install django-markup
 
 Note that `django-markup` ships with some filters ready to use, but the more
 complex packages such as Markdown or ReStructuredText are not part of the code.
@@ -26,7 +26,7 @@ Please refer the docs which packages are used for the built-in filter.
 An alternative is to install django-markup with all filter dependencies
 right away. Do so with::
 
-    pip install django-markup[all-filter-dependencies]
+    $ pip install django-markup[all-filter-dependencies]
 
 Then add it to the ``INSTALLED_APPS`` list::
 
@@ -48,7 +48,12 @@ Or in Python code::
 Testsuite
 =========
 
-To run the testsuite simply run ``python setup.py test`` which will invoke a Tox
-collection testing against various Python and Django versions.
+To run the testsuite install the project with pipenv and run it::
 
-For a specific local installation run ``python runtests.py``.
+    % pipenv install
+    $ pipenv run ./runtests.py
+
+You can also test against a variation of Django and Python versions
+using tox::
+
+    $ tox
