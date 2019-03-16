@@ -1,12 +1,18 @@
-.. image:: https://travis-ci.org/bartTC/django-markup.svg?branch=master
-    :target: https://travis-ci.org/bartTC/django-markup
-
-.. image:: https://codecov.io/github/bartTC/django-markup/coverage.svg?branch=master
-    :target: https://codecov.io/github/bartTC/django-markup?branch=master
-
 =============
 django-markup
 =============
+
+.. image:: https://img.shields.io/pypi/v/django-markup.svg
+    :target: https://pypi.org/project/django-markup/
+
+.. image:: https://travis-ci.org/bartTC/django-markup.svg?branch=master
+    :target: https://travis-ci.org/bartTC/django-markup
+
+.. image:: https://api.codacy.com/project/badge/Coverage/59e4d38171644acaa13731f08f83ec10
+    :target: https://www.codacy.com/app/bartTC/django-markup
+
+.. image:: https://api.codacy.com/project/badge/Grade/59e4d38171644acaa13731f08f83ec10
+    :target: https://www.codacy.com/app/bartTC/django-markup
 
 This app is a generic way to provide filters that convert text into html.
 
