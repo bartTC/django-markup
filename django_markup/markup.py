@@ -1,9 +1,9 @@
+import six
 from django.conf import settings
 
-import six
-
-from django_markup.defaults import (DEFAULT_MARKUP_CHOICES,
-                                    DEFAULT_MARKUP_FILTER)
+from django_markup.defaults import (
+    DEFAULT_MARKUP_CHOICES, DEFAULT_MARKUP_FILTER
+)
 
 
 class MarkupFormatter(object):

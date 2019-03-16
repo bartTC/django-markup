@@ -14,6 +14,7 @@ class MarkdownMarkupFilter(MarkupFilter):
             self.kwargs.update(kwargs)
 
         from markdown import markdown
+
         text = markdown(text, **self.kwargs)
 
         # Markdowns safe_mode is deprecated. We replace it with  Bleach
@@ -22,6 +23,7 @@ class MarkdownMarkupFilter(MarkupFilter):
         if self.kwargs.get('safe_mode') is True:
             from bleach_whitelist import markdown_tags, markdown_attrs
             from bleach import clean
+
             text = clean(text, markdown_tags, markdown_attrs)
 
         return text

@@ -4,8 +4,8 @@ import os
 
 from django.test import TestCase
 
-from . import markup_strings as s
 from ..markup import formatter
+from . import markup_strings as s
 
 FILES_DIR = os.path.join(os.path.dirname(__file__), 'files')
 

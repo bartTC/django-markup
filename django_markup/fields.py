@@ -1,8 +1,7 @@
+import six
 from django.core.exceptions import ImproperlyConfigured
 from django.db.models.fields import CharField
 from django.utils.translation import ugettext_lazy
-
-import six
 
 from django_markup.markup import formatter
 
@@ -27,4 +26,3 @@ class MarkupField(CharField):
         kwargs.setdefault('choices', formatter.choices())
         kwargs.setdefault('verbose_name', ugettext_lazy('markup'))
         CharField.__init__(self, *args, **kwargs)
-
