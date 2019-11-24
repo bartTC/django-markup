@@ -1,7 +1,3 @@
-=============
-django-markup
-=============
-
 .. image:: https://img.shields.io/pypi/v/django-markup.svg
     :target: https://pypi.org/project/django-markup/
 
@@ -14,9 +10,15 @@ django-markup
 .. image:: https://api.codacy.com/project/badge/Grade/59e4d38171644acaa13731f08f83ec10
     :target: https://www.codacy.com/app/bartTC/django-markup
 
-This app is a generic way to provide filters that convert text into html.
+----
 
-The documentation is available at https://docs.elephant.house/django-markup/
+📖 Full documentation on https://django-markup.readthedocs.io/en/latest/
+
+=============
+django-markup
+=============
+
+This app is a generic way to provide filters that convert text into html.
 
 Quickstart
 ==========
