@@ -4,7 +4,7 @@ Markdown
 ========
 
 - Filter name: ``markdown``
-- Pypi package: ``Markdown``
+- Pypi package: ``Markdown``, ``bleach``, ``bleach-whitelist``
 
 This filter comes with default settings::
 
