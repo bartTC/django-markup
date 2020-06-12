@@ -38,6 +38,11 @@ class FormatterTestCase(TestCase):
         result = formatter(text, filter_name='markdown')
         self.assertEqual(result, expected)
 
+    def test_markdown_filter_pre(self):
+        text, expected = s.MARKDOWN_PRE
+        result = formatter(text, filter_name='markdown')
+        self.assertEqual(result, expected)
+
     def test_markdown_safemode_enabled_by_default(self):
         """Safe mode is enabled by default."""
         text, expected = s.MARKDOWN_JS_LINK

@@ -21,8 +21,26 @@ class MarkdownMarkupFilter(MarkupFilter):
         # to keep it backwards compatible.
         # https://python-markdown.github.io/change_log/release-2.6/#safe_mode-deprecated
         if self.kwargs.get('safe_mode') is True:
-            from bleach_whitelist import markdown_tags, markdown_attrs
             from bleach import clean
+
+            # fmt: off
+            markdown_tags = [
+                "h1", "h2", "h3", "h4", "h5", "h6",
+                "b", "i", "strong", "em", "tt",
+                "p", "br",
+                "span", "div", "blockquote", "pre", "code", "hr",
+                "ul", "ol", "li", "dd", "dt",
+                "img",
+                "a",
+                "sub", "sup",
+            ]
+
+            markdown_attrs = {
+                "*": ["id"],
+                "img": ["src", "alt", "title"],
+                "a": ["href", "alt", "title"],
+            }
+            # fmt: on
 
             text = clean(text, markdown_tags, markdown_attrs)
 

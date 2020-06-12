@@ -12,6 +12,12 @@ LINEBREAKS = ('*This* is some text.', '<p>*This* is some text.</p>')
 # Simple Markdown
 MARKDOWN = ('*This* is some text.', '<p><em>This</em> is some text.</p>')
 
+# Markdown with PRE tag
+MARKDOWN_PRE = (
+    '    code line 1\n    code line 2\n',
+    '<pre><code>code line 1\ncode line 2\n</code></pre>',
+)
+
 # Simple Markdown
 MARKDOWN_JS_LINK = (
     '[Javascript Link](javascript:alert("123");)',
