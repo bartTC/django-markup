@@ -1,6 +1,15 @@
 Changelog
 =========
 
+v1.5 (2020-06-12):
+------------------
+
+- Dropped support for Django <=1.11 and Python <=3.5.
+- Python 3.8 compatibility and tests.
+- Django 3.0 compatibility and tests.
+- bleach-whitelist dependency is no longer necessary as tags are now shipped
+  with the built-in markdown filter.
+
 v1.4 (2019-03-15):
 ------------------
 
