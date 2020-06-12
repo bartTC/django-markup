@@ -4,5 +4,6 @@ include LICENSE
 include runtests.py
 include tox.ini
 recursive-include django_markup/tests/files *
+recursive-include django_markup/tests/templates *
 recursive-include docs *
 recursive-exclude docs/_build *
