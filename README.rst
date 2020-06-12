@@ -58,8 +58,8 @@ Testsuite
 
 To run the testsuite install the project with pipenv and run it::
 
-    % pipenv install
-    $ pipenv run ./runtests.py
+    % pipenv install --dev
+    $ pipenv run test
 
 You can also test against a variation of Django and Python versions
 using tox::

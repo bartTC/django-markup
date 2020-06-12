@@ -9,6 +9,7 @@ v1.5 (2020-06-12):
 - Django 3.0 compatibility and tests.
 - bleach-whitelist dependency is no longer necessary as tags are now shipped
   with the built-in markdown filter.
+- Uses pytest for testing.
 
 v1.4 (2019-03-15):
 ------------------

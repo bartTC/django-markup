@@ -1,9 +1,12 @@
-include README.rst
-include CHANGELOG.rst
+include *.in
+include *.lock
+include *.py
+include *.rst
 include LICENSE
-include runtests.py
+include Pipfile
 include tox.ini
-recursive-include django_markup/tests/files *
-recursive-include django_markup/tests/templates *
-recursive-include docs *
-recursive-exclude docs/_build *
+recursive-include django_markup *.html
+recursive-include django_markup *.txt
+recursive-include docs *.css
+recursive-include docs *.py
+recursive-include docs *.rst

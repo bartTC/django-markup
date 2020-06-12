@@ -1,4 +1,3 @@
-import six
 from django.conf import settings
 
 from django_markup.defaults import (
@@ -14,7 +13,7 @@ class MarkupFormatter(object):
             filter_list = getattr(
                 settings, 'MARKUP_FILTER', DEFAULT_MARKUP_FILTER
             )
-            for filter_name, filter_class in six.iteritems(filter_list):
+            for filter_name, filter_class in filter_list.items():
                 self.register(filter_name, filter_class)
 
     def _get_filter_title(self, filter_name):
@@ -85,7 +84,7 @@ class MarkupFormatter(object):
         if filter_name not in self.filter_list:
             raise ValueError(
                 "'%s' is not a registered markup filter. Registered filters are: %s."
-                % (filter_name, ', '.join(six.iterkeys(self.filter_list)))
+                % (filter_name, ', '.join(self.filter_list.keys()))
             )
         filter_class = self.filter_list[filter_name]
 

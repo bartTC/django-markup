@@ -10,9 +10,13 @@ django-markup = {editable = true,extras = ["all_filter_dependencies"],path = "."
 isort = "*"
 black = "*"
 coverage = "*"
+pytest = "*"
+pytest-django = "*"
+pytest-cov = "*"
 
 [scripts]
 cleanup = "sh -c \"black --skip-string-normalization --line-length=80 --exclude='/(migrations)/' django_markup && isort -rc django_markup\""
+test = "sh -c \"coverage erase && pytest && coverage html && echo Coverage report in /tmp/coverage_report/django-markup/index.html\""
 
 [pipenv]
 allow_prereleases = true

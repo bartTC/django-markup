@@ -1,4 +1,3 @@
-import six
 from django.core.exceptions import ImproperlyConfigured
 from django.db.models.fields import CharField
 from django.utils.translation import ugettext_lazy
@@ -18,7 +17,7 @@ class MarkupField(CharField):
             if default not in formatter.filter_list:
                 raise ImproperlyConfigured(
                     "'%s' is not a registered markup filter. Registered filters are: %s."
-                    % (default, ', '.join(six.iterkeys(formatter.filter_list)))
+                    % (default, ', '.join(formatter.filter_list.keys()))
                 )
             kwargs.setdefault('default', default)
 
