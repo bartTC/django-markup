@@ -17,12 +17,12 @@ class PythonTemplateTagTestCase(TestCase):
 
     def test_none_filter(self):
         text, expected = s.NONE
-        result = apply_markup(text, 'none')
+        result = apply_markup(text, "none")
         self.assertEqual(result, expected)
 
     def test_markdown_filter(self):
         text, expected = s.MARKDOWN
-        result = apply_markup(text, 'markdown')
+        result = apply_markup(text, "markdown")
         self.assertEqual(result, expected)
 
 
@@ -39,7 +39,7 @@ class TemplateTagTestCase(TestCase):
         """
         text, expected = s.MARKDOWN
         result = render_to_string(
-            'test_templatetag.html', {'text': text, 'filter': 'markdown'}
+            "test_templatetag.html", {"text": text, "filter": "markdown"}
         )
 
         # Strip leading and trailing whitespace from the rendered HTL
@@ -57,8 +57,8 @@ class TemplateTagTestCase(TestCase):
         """
         text, expected = s.MARKDOWN
         result = render_to_string(
-            'test_templatetag_filterwrapper.html',
-            {'text': text, 'filter': 'markdown'},
+            "test_templatetag_filterwrapper.html",
+            {"text": text, "filter": "markdown"},
         )
 
         # Strip leading and trailing whitespace from the rendered HTL

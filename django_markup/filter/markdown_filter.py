@@ -6,8 +6,8 @@ class MarkdownMarkupFilter(MarkupFilter):
     Applies Markdown conversion to a string, and returns the HTML.
     """
 
-    title = 'Markdown'
-    kwargs = {'safe_mode': True}
+    title = "Markdown"
+    kwargs = {"safe_mode": True}
 
     def render(self, text, **kwargs):
         if kwargs:
@@ -20,7 +20,7 @@ class MarkdownMarkupFilter(MarkupFilter):
         # Markdowns safe_mode is deprecated. We replace it with  Bleach
         # to keep it backwards compatible.
         # https://python-markdown.github.io/change_log/release-2.6/#safe_mode-deprecated
-        if self.kwargs.get('safe_mode') is True:
+        if self.kwargs.get("safe_mode") is True:
             from bleach import clean
 
             # fmt: off

@@ -4,7 +4,7 @@ class MarkupFilter(object):
     a filter, it accepts the text in it's render method and returns it, as is.
     """
 
-    title = 'BaseFilter'
+    title = "BaseFilter"
 
     def render(self, text, **kwargs):
         return text

@@ -12,17 +12,17 @@ from django_markup.filter.widont_filter import WidontMarkupFilter
 # You can override this list within your settings: MARKUP_FILTER
 
 DEFAULT_MARKUP_FILTER = {
-    'creole': CreoleMarkupFilter,
-    'linebreaks': LinebreaksMarkupFilter,
-    'markdown': MarkdownMarkupFilter,
-    'none': NoneMarkupFilter,
-    'restructuredtext': RstMarkupFilter,
-    'smartypants': SmartyPantsMarkupFilter,
-    'textile': TextileMarkupFilter,
-    'widont': WidontMarkupFilter,
+    "creole": CreoleMarkupFilter,
+    "linebreaks": LinebreaksMarkupFilter,
+    "markdown": MarkdownMarkupFilter,
+    "none": NoneMarkupFilter,
+    "restructuredtext": RstMarkupFilter,
+    "smartypants": SmartyPantsMarkupFilter,
+    "textile": TextileMarkupFilter,
+    "widont": WidontMarkupFilter,
 }
 
 # MarkupFilter that are the default value for choices, used in the MarkupField
 # You can override this list within your settings: MARKUP_CHOICES
 
-DEFAULT_MARKUP_CHOICES = ('none', 'linebreaks', 'markdown', 'restructuredtext')
+DEFAULT_MARKUP_CHOICES = ("none", "linebreaks", "markdown", "restructuredtext")

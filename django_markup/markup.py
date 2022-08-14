@@ -10,9 +10,7 @@ class MarkupFormatter(object):
         self.filter_list = {}
 
         if load_defaults:
-            filter_list = getattr(
-                settings, 'MARKUP_FILTER', DEFAULT_MARKUP_FILTER
-            )
+            filter_list = getattr(settings, "MARKUP_FILTER", DEFAULT_MARKUP_FILTER)
             for filter_name, filter_class in filter_list.items():
                 self.register(filter_name, filter_class)
 
@@ -29,18 +27,16 @@ class MarkupFormatter(object):
         >>> MarkupFormatter._get_title('a_cool_filter_name')
         'A Cool Filter Name'
         """
-        title = getattr(self.filter_list[filter_name], 'title', None)
+        title = getattr(self.filter_list[filter_name], "title", None)
         if not title:
-            title = ' '.join([w.title() for w in filter_name.split('_')])
+            title = " ".join([w.title() for w in filter_name.split("_")])
         return title
 
     def choices(self):
         """
         Returns the filter list as a tuple. Useful for model choices.
         """
-        choice_list = getattr(
-            settings, 'MARKUP_CHOICES', DEFAULT_MARKUP_CHOICES
-        )
+        choice_list = getattr(settings, "MARKUP_CHOICES", DEFAULT_MARKUP_CHOICES)
         return [(f, self._get_filter_title(f)) for f in choice_list]
 
     def register(self, filter_name, filter_class):
@@ -76,7 +72,7 @@ class MarkupFormatter(object):
         TODO: `filter` should either be a filter_name or a filter class.
         """
 
-        filter_fallback = getattr(settings, 'MARKUP_FILTER_FALLBACK', False)
+        filter_fallback = getattr(settings, "MARKUP_FILTER_FALLBACK", False)
         if not filter_name and filter_fallback:
             filter_name = filter_fallback
 
@@ -84,13 +80,13 @@ class MarkupFormatter(object):
         if filter_name not in self.filter_list:
             raise ValueError(
                 "'%s' is not a registered markup filter. Registered filters are: %s."
-                % (filter_name, ', '.join(self.filter_list.keys()))
+                % (filter_name, ", ".join(self.filter_list.keys()))
             )
         filter_class = self.filter_list[filter_name]
 
         # Read global filter settings and apply it
         filter_kwargs = {}
-        filter_settings = getattr(settings, 'MARKUP_SETTINGS', {})
+        filter_settings = getattr(settings, "MARKUP_SETTINGS", {})
         if filter_name in filter_settings:
             filter_kwargs.update(filter_settings[filter_name])
         filter_kwargs.update(**kwargs)

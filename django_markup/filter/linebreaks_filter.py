@@ -10,7 +10,7 @@ class LinebreaksMarkupFilter(MarkupFilter):
     followed by a blank line becomes a paragraph break (``</p>``).
     """
 
-    title = 'Linebreaks'
+    title = "Linebreaks"
 
     def render(self, text, **kwargs):
         return linebreaks(text, **kwargs)

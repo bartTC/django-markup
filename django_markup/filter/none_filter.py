@@ -7,4 +7,4 @@ class NoneMarkupFilter(MarkupFilter):
     base class does.
     """
 
-    title = 'None (no processing)'
+    title = "None (no processing)"
