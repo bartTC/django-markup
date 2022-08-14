@@ -1,6 +1,17 @@
 Changelog
 =========
 
+v1.6 (2022-08-14):
+------------------
+
+- Dropped support for Django <3.2 and Python <3.7.
+- Django 3.2 (LTS) compatibility and tests.
+- Django 4.0 compatibility and tests.
+- Django 4.1 compatibility and tests.
+- Python 3.9 compatibility and tests.
+- Python 3.10 compatibility and tests.
+
+
 v1.5 (2020-06-12):
 ------------------
 
