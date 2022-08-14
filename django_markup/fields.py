@@ -1,6 +1,6 @@
 from django.core.exceptions import ImproperlyConfigured
 from django.db.models.fields import CharField
-from django.utils.translation import ugettext_lazy
+from django.utils.translation import gettext_lazy
 
 from django_markup.markup import formatter
 
@@ -17,11 +17,11 @@ class MarkupField(CharField):
             if default not in formatter.filter_list:
                 raise ImproperlyConfigured(
                     "'%s' is not a registered markup filter. Registered filters are: %s."
-                    % (default, ', '.join(formatter.filter_list.keys()))
+                    % (default, ", ".join(formatter.filter_list.keys()))
                 )
-            kwargs.setdefault('default', default)
+            kwargs.setdefault("default", default)
 
-        kwargs.setdefault('max_length', 255)
-        kwargs.setdefault('choices', formatter.choices())
-        kwargs.setdefault('verbose_name', ugettext_lazy('markup'))
+        kwargs.setdefault("max_length", 255)
+        kwargs.setdefault("choices", formatter.choices())
+        kwargs.setdefault("verbose_name", gettext_lazy("markup"))
         CharField.__init__(self, *args, **kwargs)

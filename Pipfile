@@ -15,7 +15,7 @@ pytest-django = "*"
 pytest-cov = "*"
 
 [scripts]
-cleanup = "sh -c \"black --skip-string-normalization --line-length=80 --exclude='/(migrations)/' django_markup && isort -rc django_markup\""
+cleanup = "sh -c \"black --exclude='/(migrations)/' django_markup && isort django_markup\""
 test = "sh -c \"coverage erase && pytest && coverage html && echo Coverage report in /tmp/coverage_report/django-markup/index.html\""
 
 [pipenv]

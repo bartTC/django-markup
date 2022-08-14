@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django_markup.filter import MarkupFilter
 
 
@@ -15,12 +13,12 @@ class RstMarkupFilter(MarkupFilter):
             return 'foo'
     """
 
-    title = 'reStructuredText'
-    rst_part_name = 'html_body'
+    title = "reStructuredText"
+    rst_part_name = "html_body"
     kwargs = {
-        'settings_overrides': {
-            'raw_enabled': False,
-            'file_insertion_enabled': False,
+        "settings_overrides": {
+            "raw_enabled": False,
+            "file_insertion_enabled": False,
         }
     }
 
@@ -29,7 +27,7 @@ class RstMarkupFilter(MarkupFilter):
             self.kwargs.update(kwargs)
         from docutils import core
 
-        publish_args = {'source': text, 'writer_name': 'html4css1'}
+        publish_args = {"source": text, "writer_name": "html4css1"}
         publish_args.update(**self.kwargs)
         parts = core.publish_parts(**publish_args)
         return parts[self.rst_part_name]

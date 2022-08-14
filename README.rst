@@ -20,6 +20,17 @@ django-markup
 
 This app is a generic way to provide filters that convert text into html.
 
+Compatibility Matrix:
+=====================
+
+========= === === === ====
+Py/Dj     3.7 3.8 3.9 3.10
+========= === === === ====
+3.2 (LTS) ✓   ✓   ✓   ✓
+4.1       ➖   ✓   ✓   ✓
+4.2       ➖   ✓   ✓   ✓
+========= === === === ====
+
 Quickstart
 ==========
 
