@@ -1,14 +1,8 @@
 .. image:: https://img.shields.io/pypi/v/django-markup.svg
     :target: https://pypi.org/project/django-markup/
 
-.. image:: https://travis-ci.org/bartTC/django-markup.svg?branch=master
-    :target: https://travis-ci.org/bartTC/django-markup
-
-.. image:: https://api.codacy.com/project/badge/Coverage/59e4d38171644acaa13731f08f83ec10
-    :target: https://www.codacy.com/app/bartTC/django-markup
-
-.. image:: https://api.codacy.com/project/badge/Grade/59e4d38171644acaa13731f08f83ec10
-    :target: https://www.codacy.com/app/bartTC/django-markup
+.. image:: https://github.com/bartTC/django-markup/actions/workflows/push.yml/badge.svg?branch=main
+    :target: https://github.com/bartTC/django-markup/actions
 
 ----
 
@@ -26,9 +20,9 @@ Compatibility Matrix:
 ========= === === === ====
 Py/Dj     3.7 3.8 3.9 3.10
 ========= === === === ====
-3.2 (LTS) ✓   ✓   ✓   ✓
-4.1       ➖   ✓   ✓   ✓
-4.2       ➖   ✓   ✓   ✓
+3.2 (LTS)  ✓   ✓   ✓   ✓
+4.1            ✓   ✓   ✓
+4.2            ✓   ✓   ✓
 ========= === === === ====
 
 Quickstart
