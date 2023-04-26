@@ -13,6 +13,8 @@ coverage = "*"
 pytest = "*"
 pytest-django = "*"
 pytest-cov = "*"
+wheel = "*"
+setuptools = "*"
 
 [scripts]
 cleanup = "sh -c \"black --exclude='/(migrations)/' django_markup && isort django_markup\""
