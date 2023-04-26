@@ -19,7 +19,7 @@ class RstMarkupFilter(MarkupFilter):
         "settings_overrides": {
             "raw_enabled": False,
             "file_insertion_enabled": False,
-        }
+        },
     }
 
     def render(self, text, **kwargs):

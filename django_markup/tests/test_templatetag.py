@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.template.loader import render_to_string
 from django.test import TestCase
 
@@ -39,7 +37,8 @@ class TemplateTagTestCase(TestCase):
         """
         text, expected = s.MARKDOWN
         result = render_to_string(
-            "test_templatetag.html", {"text": text, "filter": "markdown"}
+            "test_templatetag.html",
+            {"text": text, "filter": "markdown"},
         )
 
         # Strip leading and trailing whitespace from the rendered HTL

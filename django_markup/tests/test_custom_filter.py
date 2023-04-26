@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.test import TestCase
 
 from django_markup.filter import MarkupFilter
@@ -64,7 +62,10 @@ class CustomMarkupFilterTestCase(TestCase):
         formatter.unregister("uppercase")
 
         self.assertRaises(
-            ValueError, formatter, "This is some text", filter_name="uppercase"
+            ValueError,
+            formatter,
+            "This is some text",
+            filter_name="uppercase",
         )
 
     def test_fallback_filter(self):

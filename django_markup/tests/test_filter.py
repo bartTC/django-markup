@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import os
 
 from django.test import TestCase
@@ -20,7 +18,10 @@ class FormatterTestCase(TestCase):
         Trying to call a unregistered filter will raise a ValueError.
         """
         self.assertRaises(
-            ValueError, formatter, "some text", filter_name="does-not-exist"
+            ValueError,
+            formatter,
+            "some text",
+            filter_name="does-not-exist",
         )
 
     def test_none_filter(self):
@@ -78,7 +79,7 @@ class FormatterTestCase(TestCase):
         """
         text = open(os.path.join(FILES_DIR, "rst_with_pygments.txt")).read()
         expected = open(
-            os.path.join(FILES_DIR, "rst_with_pygments_expected.txt")
+            os.path.join(FILES_DIR, "rst_with_pygments_expected.txt"),
         ).read()
         result = formatter(text, filter_name="restructuredtext")
 

@@ -17,8 +17,8 @@ wheel = "*"
 setuptools = "*"
 
 [scripts]
-cleanup = "sh -c \"black --exclude='/(migrations)/' django_markup && isort django_markup\""
-test = "sh -c \"coverage erase && pytest && coverage html && echo Coverage report in /tmp/coverage_report/django-markup/index.html\""
+cleanup = "sh -c 'ruff --fix --exit-zero django_markup && black django_markup'"
+test = "pytest"
 
 [pipenv]
 allow_prereleases = true

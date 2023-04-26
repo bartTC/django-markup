@@ -16,8 +16,10 @@ class MarkupField(CharField):
         if default:
             if default not in formatter.filter_list:
                 raise ImproperlyConfigured(
-                    "'%s' is not a registered markup filter. Registered filters are: %s."
-                    % (default, ", ".join(formatter.filter_list.keys()))
+                    "'{}' is not a registered markup filter. Registered filters are: {}.".format(
+                        default,
+                        ", ".join(formatter.filter_list.keys()),
+                    ),
                 )
             kwargs.setdefault("default", default)
 

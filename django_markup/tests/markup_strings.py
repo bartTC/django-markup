@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 """
 Sample Markup strings and their expected pendant.
 """
