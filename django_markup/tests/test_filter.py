@@ -81,6 +81,7 @@ class FormatterTestCase(TestCase):
             os.path.join(FILES_DIR, "rst_with_pygments_expected.txt")
         ).read()
         result = formatter(text, filter_name="restructuredtext")
+
         self.assertEqual(result, expected)
 
     def test_rst_raw_default(self):
