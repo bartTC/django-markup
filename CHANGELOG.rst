@@ -1,6 +1,12 @@
 Changelog
 =========
 
+v1.7 (2023-04-25):
+------------------
+
+- Django 4.2 compatibility and tests.
+- Python 3.11 compatibility and tests.
+
 v1.6 (2022-08-14):
 ------------------
 
