@@ -3,4 +3,5 @@
 .coverage
 .eggs
 build/
+dist/
 docs/_build
