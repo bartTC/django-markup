@@ -71,3 +71,4 @@ You can also test against a variation of Django and Python versions
 using tox::
 
     $ tox
+
