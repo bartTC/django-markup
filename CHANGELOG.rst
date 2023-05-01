@@ -8,7 +8,7 @@ v1.7.2 (2023-05-01):
   not exist. The correct version is 3.2.
 
 v1.7.1 (2023-04-25):
-------------------
+--------------------
 
 - Fixed Python classifiers in setup.cfg.
 
