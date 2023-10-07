@@ -1,7 +1,9 @@
+from typing import Any, Self
+
 from django.db.models.fields import CharField
 from django.utils.translation import gettext_lazy
 
-from django_markup.markup import UnregisteredFilterError, formatter
+from django_markup.markup import MarkupFormatter, UnregisteredFilterError, formatter
 
 
 class MarkupField(CharField):
@@ -10,7 +12,13 @@ class MarkupField(CharField):
     displayed as a ChoiceField.
     """
 
-    def __init__(self, default=False, formatter=formatter, *args, **kwargs):
+    def __init__(
+        self: Self,
+        default: bool = False,
+        formatter: MarkupFormatter = formatter,
+        *args: Any,
+        **kwargs: Any,
+    ) -> None:
         # Check that the default value is a valid filter
         if default:
             if default not in formatter.filter_list:
@@ -18,9 +26,7 @@ class MarkupField(CharField):
                     f"'{default}' is not a registered markup filter. "
                     f"Registered filters are: {formatter.registered_filter_names}."
                 )
-                raise UnregisteredFilterError(
-                    msg,
-                )
+                raise UnregisteredFilterError(msg)
             kwargs.setdefault("default", default)
 
         kwargs.setdefault("max_length", 255)

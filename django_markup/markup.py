@@ -1,6 +1,13 @@
+from __future__ import annotations
+
+from typing import TYPE_CHECKING, Any, Self
+
 from django.conf import settings
 
 from django_markup.defaults import DEFAULT_MARKUP_CHOICES, DEFAULT_MARKUP_FILTER
+
+if TYPE_CHECKING:
+    from django_markup.filter import MarkupFilter
 
 
 class UnregisteredFilterError(ValueError):
@@ -8,20 +15,22 @@ class UnregisteredFilterError(ValueError):
 
 
 class MarkupFormatter:
-    def __init__(self, load_defaults=True):
-        self.filter_list = {}
+    filter_list: dict[str, type[MarkupFilter]] = {}  # noqa: RUF012
 
+    def __init__(self: Self, load_defaults: bool = True) -> None:
         if load_defaults:
             filter_list = getattr(settings, "MARKUP_FILTER", DEFAULT_MARKUP_FILTER)
             for filter_name, filter_class in filter_list.items():
                 self.register(filter_name, filter_class)
 
-    def _get_filter_title(self, filter_name):
+    def _get_filter_title(self: Self, filter_name: str) -> str:
         """
-        Returns the human readable title of a given filter_name. If no title
-        attribute is set, the filter_name is used, where underscores are
-        replaced with whitespaces and the first character of each word is
-        uppercased. Example:
+        Returns the human-readable title of a given filter_name.
+
+        If no title attribute is set, the filter_name is used, where underscores are
+        replaced with whitespaces and the first character of each word is uppercased.
+
+        Example:
 
         >>> MarkupFormatter._get_title('markdown')
         'Markdown'
@@ -35,42 +44,55 @@ class MarkupFormatter:
         return title
 
     @property
-    def registered_filter_names(self) -> list[str]:  # noqa: FA102
+    def registered_filter_names(self: Self) -> list[str]:
         return list(self.filter_list.keys())
 
-    def choices(self):
+    def choices(self: Self) -> list[tuple[str, str]]:
         """
         Returns the filter list as a tuple. Useful for model choices.
         """
         choice_list = getattr(settings, "MARKUP_CHOICES", DEFAULT_MARKUP_CHOICES)
         return [(f, self._get_filter_title(f)) for f in choice_list]
 
-    def register(self, filter_name, filter_class):
+    def register(
+        self: Self,
+        filter_name: str,
+        filter_class: type[MarkupFilter],
+    ) -> None:
         """
         Register a new filter for use
         """
         self.filter_list[filter_name] = filter_class
 
-    def update(self, filter_name, filter_class):
+    def update(
+        self: Self,
+        filter_name: str,
+        filter_class: type[MarkupFilter],
+    ) -> None:
         """
         Yep, this is the same as register, it just sounds better.
         """
         self.filter_list[filter_name] = filter_class
 
-    def unregister(self, filter_name):
+    def unregister(self: Self, filter_name: str) -> None:
         """
         Unregister a filter from the filter list
         """
         if filter_name in self.filter_list:
             self.filter_list.pop(filter_name)
 
-    def flush(self):
+    def flush(self: Self) -> None:
         """
         Flushes the filter list.
         """
         self.filter_list = {}
 
-    def __call__(self, text, filter_name=None, **kwargs):
+    def __call__(
+        self: Self,
+        text: str,
+        filter_name: str | None = None,
+        **kwargs: Any,
+    ) -> str:
         """
         Applies text-to-HTML conversion to a string, and returns the
         HTML.
@@ -78,7 +100,7 @@ class MarkupFormatter:
         TODO: `filter` should either be a filter_name or a filter class.
         """
 
-        filter_fallback = getattr(settings, "MARKUP_FILTER_FALLBACK", False)
+        filter_fallback = getattr(settings, "MARKUP_FILTER_FALLBACK", None)
         if not filter_name and filter_fallback:
             filter_name = filter_fallback
 
@@ -88,9 +110,7 @@ class MarkupFormatter:
                 f"'{filter_name}' is not a registered markup filter. "
                 f"Registered filters are: {formatter.registered_filter_names}."
             )
-            raise UnregisteredFilterError(
-                msg,
-            )
+            raise UnregisteredFilterError(msg)
         filter_class = self.filter_list[filter_name]
 
         # Read global filter settings and apply it

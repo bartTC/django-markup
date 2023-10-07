@@ -1,3 +1,6 @@
+from typing import Any, Self
+
+
 class MarkupFilter:
     """
     Abstract your new filters from this class. This is the most simplest way of
@@ -6,5 +9,9 @@ class MarkupFilter:
 
     title = "BaseFilter"
 
-    def render(self, text, **kwargs):  # noqa: ARG002 Unused argument
+    def render(
+        self: Self,
+        text: str,
+        **kwargs: Any,  # noqa: ARG002 Unused argument
+    ) -> str:
         return text

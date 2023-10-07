@@ -8,13 +8,21 @@ target-version = "py38"
 exclude = ["migrations"]
 select = ["ALL"]
 ignore = [
-  "ANN",      # Missing Annotations
+  "ANN401",   # Dynamically typed expressions (typing.Any) are disallowed in `**kwargs`"
   "D",        # Missing or badly formatted docstrings
   "FBT",      # Flake Boolean Trap (don't use arg=True in functions)
   "S101",     # Use of `assert` detected
-  "TCH",      # Type-checking
-  "TID252",   # Relative imports from parent modules are banned (from ..foo import bar)"
 ]
+
+[tool.mypy]
+check_untyped_defs = true
+ignore_errors = false
+ignore_missing_imports = true
+strict_optional = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+warn_unused_configs = true
+exclude = ".*/migrations/.*"
 
 [tool.pytest.ini_options]
 python_files = [
@@ -31,5 +39,3 @@ addopts = """
     --reuse-db
 """
 filterwarnings = ["ignore::RuntimeWarning"]
-
-

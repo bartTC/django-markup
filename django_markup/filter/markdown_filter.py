@@ -1,4 +1,4 @@
-from typing import ClassVar
+from typing import Any, ClassVar, Self
 
 from django_markup.filter import MarkupFilter
 
@@ -11,7 +11,11 @@ class MarkdownMarkupFilter(MarkupFilter):
     title = "Markdown"
     kwargs: ClassVar = {"safe_mode": True}
 
-    def render(self, text, **kwargs):
+    def render(
+        self: Self,
+        text: str,
+        **kwargs: Any,  # Unused argument
+    ) -> str:
         if kwargs:
             self.kwargs.update(kwargs)
 
@@ -19,9 +23,9 @@ class MarkdownMarkupFilter(MarkupFilter):
 
         text = markdown(text, **self.kwargs)
 
-        # Markdowns safe_mode is deprecated. We replace it with  Bleach
+        # Markdown's safe_mode is deprecated. We replace it with Bleach
         # to keep it backwards compatible.
-        # https://python-markdown.github.io/change_log/release-2.6/#safe_mode-deprecated
+        # Https://python-markdown.github.io/change_log/release-2.6/#safe_mode-deprecated
         if self.kwargs.get("safe_mode") is True:
             from bleach import clean
 

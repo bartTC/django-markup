@@ -1,4 +1,4 @@
-from typing import ClassVar
+from typing import Any, ClassVar, Self
 
 from django_markup.filter import MarkupFilter
 
@@ -6,7 +6,7 @@ from django_markup.filter import MarkupFilter
 class RstMarkupFilter(MarkupFilter):
     """
     Converts a reStructuredText string to HTML. If the pygments library is
-    installed you can use a special `sourcecode` directive to highlight
+     installed, you can use a special `sourcecode` directive to highlight
     portions of your text. Example:
 
     .. sourcecode: python
@@ -24,7 +24,11 @@ class RstMarkupFilter(MarkupFilter):
         },
     }
 
-    def render(self, text, **kwargs):
+    def render(
+        self: Self,
+        text: str,
+        **kwargs: Any,  # Unused argument
+    ) -> str:
         if kwargs:
             self.kwargs.update(kwargs)
         from docutils import core
