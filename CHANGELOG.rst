@@ -1,6 +1,13 @@
 Changelog
 =========
 
+v1.8 (2023-10-07):
+------------------
+
+- Drop support for Python <3.8.
+- Added support for Python 3.12 and Django 5.0.
+- Type Annotations.
+
 v1.7.2 (2023-05-01):
 --------------------
 

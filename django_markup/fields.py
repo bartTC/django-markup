@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Any, Self
 
 from django.db.models.fields import CharField
