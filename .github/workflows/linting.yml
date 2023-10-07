@@ -24,4 +24,4 @@ jobs:
 
       - name: Type Check
         if: always()
-        run: mypy --install-types django_markup
+        run: mypy --install-types --non-interactive django_markup
