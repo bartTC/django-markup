@@ -12,7 +12,7 @@ Let's make an example that reads a text and converts it to uppercase::
 
     class UppercaseMarkupFilter(MarkupFilter):
         title = 'Uppercase text'
-        def render(self: Self, text, **kwargs):
+        def render(self, text, **kwargs):
             return text.upper()
 
 A filter must contain a ``render`` method that takes a variable ``text`` as it's

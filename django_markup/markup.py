@@ -7,8 +7,6 @@ from django.conf import settings
 from django_markup.defaults import DEFAULT_MARKUP_CHOICES, DEFAULT_MARKUP_FILTER
 
 if TYPE_CHECKING:
-    from typing_extensions import Self
-
     from django_markup.filter import MarkupFilter
 
 
@@ -19,13 +17,13 @@ class UnregisteredFilterError(ValueError):
 class MarkupFormatter:
     filter_list: dict[str, type[MarkupFilter]] = {}  # noqa: RUF012
 
-    def __init__(self: Self, load_defaults: bool = True) -> None:
+    def __init__(self, load_defaults: bool = True) -> None:
         if load_defaults:
             filter_list = getattr(settings, "MARKUP_FILTER", DEFAULT_MARKUP_FILTER)
             for filter_name, filter_class in filter_list.items():
                 self.register(filter_name, filter_class)
 
-    def _get_filter_title(self: Self, filter_name: str) -> str:
+    def _get_filter_title(self, filter_name: str) -> str:
         """
         Returns the human-readable title of a given filter_name.
 
@@ -46,10 +44,10 @@ class MarkupFormatter:
         return title
 
     @property
-    def registered_filter_names(self: Self) -> list[str]:
+    def registered_filter_names(self) -> list[str]:
         return list(self.filter_list.keys())
 
-    def choices(self: Self) -> list[tuple[str, str]]:
+    def choices(self) -> list[tuple[str, str]]:
         """
         Returns the filter list as a tuple. Useful for model choices.
         """
@@ -57,7 +55,7 @@ class MarkupFormatter:
         return [(f, self._get_filter_title(f)) for f in choice_list]
 
     def register(
-        self: Self,
+        self,
         filter_name: str,
         filter_class: type[MarkupFilter],
     ) -> None:
@@ -67,7 +65,7 @@ class MarkupFormatter:
         self.filter_list[filter_name] = filter_class
 
     def update(
-        self: Self,
+        self,
         filter_name: str,
         filter_class: type[MarkupFilter],
     ) -> None:
@@ -76,21 +74,21 @@ class MarkupFormatter:
         """
         self.filter_list[filter_name] = filter_class
 
-    def unregister(self: Self, filter_name: str) -> None:
+    def unregister(self, filter_name: str) -> None:
         """
         Unregister a filter from the filter list
         """
         if filter_name in self.filter_list:
             self.filter_list.pop(filter_name)
 
-    def flush(self: Self) -> None:
+    def flush(self) -> None:
         """
         Flushes the filter list.
         """
         self.filter_list = {}
 
     def __call__(
-        self: Self,
+        self,
         text: str,
         filter_name: str | None = None,
         **kwargs: Any,

@@ -1,15 +1,12 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any
+from typing import Any
 
 import pytest
 from django.test import TestCase
 
 from django_markup.filter import MarkupFilter
 from django_markup.markup import UnregisteredFilterError, formatter
-
-if TYPE_CHECKING:
-    from typing_extensions import Self
 
 
 class UppercaseMarkupFilter(MarkupFilter):
@@ -20,7 +17,7 @@ class UppercaseMarkupFilter(MarkupFilter):
     title = "UppercaseFilter"
 
     def render(
-        self: Self,
+        self,
         text: str,
         **kwargs: Any,  # noqa: ARG002 Unused argument
     ) -> str:
@@ -35,7 +32,7 @@ class LowercaseMarkupFilter(MarkupFilter):
     title = "LowercaseFilter"
 
     def render(
-        self: Self,
+        self,
         text: str,
         **kwargs: Any,  # noqa: ARG002 Unused argument
     ) -> str:
@@ -47,7 +44,7 @@ class CustomMarkupFilterTestCase(TestCase):
     Test the registration/unregistration of a custom filter.
     """
 
-    def test_register_filter(self: Self) -> None:
+    def test_register_filter(self) -> None:
         """
         Register the filter, and its wildly available.
         """
@@ -57,7 +54,7 @@ class CustomMarkupFilterTestCase(TestCase):
         result = formatter("This is some text", filter_name="uppercase")
         assert result == "THIS IS SOME TEXT"
 
-    def test_update_filter(self: Self) -> None:
+    def test_update_filter(self) -> None:
         """
         You can update an existing filter, but keep the name.
         """
@@ -68,7 +65,7 @@ class CustomMarkupFilterTestCase(TestCase):
         result = formatter("This Is Some Text", filter_name="uppercase")
         assert result == "this is some text"
 
-    def test_unregister_filter(self: Self) -> None:
+    def test_unregister_filter(self) -> None:
         # Unregistering a filter that does not exist is simply ignored
         formatter.unregister("does-not-exist")
 
@@ -84,7 +81,7 @@ class CustomMarkupFilterTestCase(TestCase):
             filter_name="uppercase",
         )
 
-    def test_fallback_filter(self: Self) -> None:
+    def test_fallback_filter(self) -> None:
         """
         You can call the formatter without a `filter_name` as long as a
         `MARKUP_FILTER_FALLBACK` setting is set.

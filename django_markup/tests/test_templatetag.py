@@ -1,16 +1,11 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 from django.template.loader import render_to_string
 from django.test import TestCase
 
 from django_markup.templatetags.markup_tags import apply_markup
 
 from . import markup_strings as s
-
-if TYPE_CHECKING:
-    from typing_extensions import Self
 
 
 class PythonTemplateTagTestCase(TestCase):
@@ -21,12 +16,12 @@ class PythonTemplateTagTestCase(TestCase):
     covered in `test_filter`.
     """
 
-    def test_none_filter(self: Self) -> None:
+    def test_none_filter(self) -> None:
         text, expected = s.NONE
         result = apply_markup(text, "none")
         assert result == expected
 
-    def test_markdown_filter(self: Self) -> None:
+    def test_markdown_filter(self) -> None:
         text, expected = s.MARKDOWN
         result = apply_markup(text, "markdown")
         assert result == expected
@@ -37,7 +32,7 @@ class TemplateTagTestCase(TestCase):
     Test the proper markup conversion using the template tag in a template itself.
     """
 
-    def test_markdown_filter_with_templatetag(self: Self) -> None:
+    def test_markdown_filter_with_templatetag(self) -> None:
         """
         Test usage as a template tag:
 
@@ -55,7 +50,7 @@ class TemplateTagTestCase(TestCase):
         assert result == expected
 
     def test_markdown_filter_with_templatetag_in_django_filterwrapper(
-        self: Self,
+        self,
     ) -> None:
         """
         Test usage using Django's filter tag:
