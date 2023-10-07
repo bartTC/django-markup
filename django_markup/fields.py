@@ -1,11 +1,14 @@
 from __future__ import annotations
 
-from typing import Any, Self
+from typing import TYPE_CHECKING, Any
 
 from django.db.models.fields import CharField
 from django.utils.translation import gettext_lazy
 
 from django_markup.markup import MarkupFormatter, UnregisteredFilterError, formatter
+
+if TYPE_CHECKING:
+    from typing_extensions import Self
 
 
 class MarkupField(CharField):

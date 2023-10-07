@@ -1,4 +1,4 @@
-from typing import Any, Self
+from typing import Any
 
 
 class MarkupFilter:
@@ -10,7 +10,7 @@ class MarkupFilter:
     title = "BaseFilter"
 
     def render(
-        self: Self,
+        self,
         text: str,
         **kwargs: Any,  # noqa: ARG002 Unused argument
     ) -> str:

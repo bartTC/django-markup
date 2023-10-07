@@ -12,6 +12,7 @@ ignore = [
   "D",        # Missing or badly formatted docstrings
   "FBT",      # Flake Boolean Trap (don't use arg=True in functions)
   "S101",     # Use of `assert` detected
+  "ANN101",   # Missing Type Annotation for "self"
 ]
 
 [tool.mypy]

@@ -1,4 +1,4 @@
-from typing import Any, ClassVar, Self
+from typing import Any, ClassVar
 
 from django_markup.filter import MarkupFilter
 
@@ -12,7 +12,7 @@ class MarkdownMarkupFilter(MarkupFilter):
     kwargs: ClassVar = {"safe_mode": True}
 
     def render(
-        self: Self,
+        self,
         text: str,
         **kwargs: Any,  # Unused argument
     ) -> str:

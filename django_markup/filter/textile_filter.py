@@ -1,4 +1,4 @@
-from typing import Any, Self
+from typing import Any
 
 from django_markup.filter import MarkupFilter
 
@@ -7,7 +7,7 @@ class TextileMarkupFilter(MarkupFilter):
     title = "Textile"
 
     def render(
-        self: Self,
+        self,
         text: str,
         **kwargs: Any,  # Unused argument
     ) -> str:

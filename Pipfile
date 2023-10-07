@@ -15,6 +15,7 @@ pytest-cov = "*"
 wheel = "*"
 setuptools = "*"
 ruff = "*"
+typing-extensions = "*"
 
 [scripts]
 cleanup = "sh -c 'ruff --fix --exit-zero django_markup && black django_markup'"

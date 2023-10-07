@@ -1,12 +1,14 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Self
+from typing import TYPE_CHECKING, Any
 
 from django.conf import settings
 
 from django_markup.defaults import DEFAULT_MARKUP_CHOICES, DEFAULT_MARKUP_FILTER
 
 if TYPE_CHECKING:
+    from typing_extensions import Self
+
     from django_markup.filter import MarkupFilter
 
 

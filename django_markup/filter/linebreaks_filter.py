@@ -1,4 +1,4 @@
-from typing import Any, Self
+from typing import Any
 
 from django.template.defaultfilters import linebreaks
 
@@ -15,7 +15,7 @@ class LinebreaksMarkupFilter(MarkupFilter):
     title = "Linebreaks"
 
     def render(
-        self: Self,
+        self,
         text: str,
         **kwargs: Any,  # Unused argument
     ) -> str:

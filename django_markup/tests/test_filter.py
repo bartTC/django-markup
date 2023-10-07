@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Self
+from typing import TYPE_CHECKING
 
 import pytest
 from django.test import TestCase
@@ -9,6 +9,9 @@ from django.test import TestCase
 from django_markup.markup import UnregisteredFilterError, formatter
 
 from . import markup_strings as s
+
+if TYPE_CHECKING:
+    from typing_extensions import Self
 
 FILES_DIR = Path(__file__).parent / "files"
 

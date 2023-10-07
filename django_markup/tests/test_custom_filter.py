@@ -1,12 +1,15 @@
 from __future__ import annotations
 
-from typing import Any, Self
+from typing import TYPE_CHECKING, Any
 
 import pytest
 from django.test import TestCase
 
 from django_markup.filter import MarkupFilter
 from django_markup.markup import UnregisteredFilterError, formatter
+
+if TYPE_CHECKING:
+    from typing_extensions import Self
 
 
 class UppercaseMarkupFilter(MarkupFilter):

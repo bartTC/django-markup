@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Self
+from typing import TYPE_CHECKING
 
 from django.template.loader import render_to_string
 from django.test import TestCase
@@ -8,6 +8,9 @@ from django.test import TestCase
 from django_markup.templatetags.markup_tags import apply_markup
 
 from . import markup_strings as s
+
+if TYPE_CHECKING:
+    from typing_extensions import Self
 
 
 class PythonTemplateTagTestCase(TestCase):
