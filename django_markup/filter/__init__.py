@@ -6,5 +6,5 @@ class MarkupFilter:
 
     title = "BaseFilter"
 
-    def render(self, text, **kwargs):
+    def render(self, text, **kwargs):  # noqa: ARG002 Unused argument
         return text

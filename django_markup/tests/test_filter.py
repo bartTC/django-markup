@@ -32,38 +32,38 @@ class FormatterTestCase(TestCase):
     def test_none_filter(self):
         text, expected = s.NONE
         result = formatter(text, filter_name="none")
-        self.assertEqual(result, expected)
+        assert result == expected
 
     def test_linebreaks_filter(self):
         text, expected = s.LINEBREAKS
         result = formatter(text, filter_name="linebreaks")
-        self.assertEqual(result, expected)
+        assert result == expected
 
     def test_markdown_filter(self):
         text, expected = s.MARKDOWN
         result = formatter(text, filter_name="markdown")
-        self.assertEqual(result, expected)
+        assert result == expected
 
     def test_markdown_filter_pre(self):
         text, expected = s.MARKDOWN_PRE
         result = formatter(text, filter_name="markdown")
-        self.assertEqual(result, expected)
+        assert result == expected
 
     def test_markdown_safemode_enabled_by_default(self):
         """Safe mode is enabled by default."""
         text, expected = s.MARKDOWN_JS_LINK
         result = formatter(text, filter_name="markdown")
-        self.assertEqual(result, expected)
+        assert result == expected
 
     def test_textile_filter(self):
         text, expected = s.TEXTILE
         result = formatter(text, filter_name="textile")
-        self.assertEqual(result, expected)
+        assert result == expected
 
     def test_rst_filter(self):
         text, expected = s.RST
         result = formatter(text, filter_name="restructuredtext")
-        self.assertEqual(result, expected)
+        assert result == expected
 
     def test_rst_header_levels(self):
         """
@@ -75,7 +75,7 @@ class FormatterTestCase(TestCase):
         text = self.read("rst_header.txt")
         expected = self.read("rst_header_expected.txt")
         result = formatter(text, filter_name="restructuredtext")
-        self.assertEqual(result, expected)
+        assert result == expected
 
     def test_rst_with_pygments(self):
         """
@@ -86,14 +86,14 @@ class FormatterTestCase(TestCase):
         expected = self.read("rst_with_pygments_expected.txt")
         result = formatter(text, filter_name="restructuredtext")
 
-        self.assertEqual(result, expected)
+        assert result == expected
 
     def test_rst_raw_default(self):
         """Raw file inclusion is disabled by default."""
         text = self.read("rst_raw.txt")
         result = formatter(text, filter_name="restructuredtext")
-        self.assertIn("Other text", result)
-        self.assertNotIn("<script>", result)
+        assert "Other text" in result
+        assert "<script>" not in result
 
     def test_rst_include_default(self):
         """File inclusion is disabled by default."""
@@ -103,20 +103,20 @@ class FormatterTestCase(TestCase):
             + "\n\nOther text\n"
         )
         result = formatter(text, filter_name="restructuredtext")
-        self.assertIn("Other text", result)
-        self.assertNotIn("Header 1", result)
+        assert "Other text" in result
+        assert "Header 1" not in result
 
     def test_creole_filter(self):
         text, expected = s.CREOLE
         result = formatter(text, filter_name="creole")
-        self.assertEqual(result, expected)
+        assert result == expected
 
     def test_smartypants_filter(self):
         text, expected = s.SMARTYPANTS
         result = formatter(text, filter_name="smartypants")
-        self.assertEqual(result, expected)
+        assert result == expected
 
     def test_widont_filter(self):
         text, expected = s.WIDONT
         result = formatter(text, filter_name="widont")
-        self.assertEqual(result, expected)
+        assert result == expected

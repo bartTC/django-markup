@@ -16,12 +16,12 @@ class PythonTemplateTagTestCase(TestCase):
     def test_none_filter(self):
         text, expected = s.NONE
         result = apply_markup(text, "none")
-        self.assertEqual(result, expected)
+        assert result == expected
 
     def test_markdown_filter(self):
         text, expected = s.MARKDOWN
         result = apply_markup(text, "markdown")
-        self.assertEqual(result, expected)
+        assert result == expected
 
 
 class TemplateTagTestCase(TestCase):
@@ -44,7 +44,7 @@ class TemplateTagTestCase(TestCase):
         # Strip leading and trailing whitespace from the rendered HTL
         result = result.strip()
 
-        self.assertEqual(result, expected)
+        assert result == expected
 
     def test_markdown_filter_with_templatetag_in_django_filterwrapper(self):
         """
@@ -63,4 +63,4 @@ class TemplateTagTestCase(TestCase):
         # Strip leading and trailing whitespace from the rendered HTL
         result = result.strip()
 
-        self.assertEqual(result, expected)
+        assert result == expected

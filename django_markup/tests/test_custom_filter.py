@@ -12,7 +12,7 @@ class UppercaseMarkupFilter(MarkupFilter):
 
     title = "UppercaseFilter"
 
-    def render(self, text, **kwargs):
+    def render(self, text, **kwargs):  # noqa: ARG002 Unused argument
         return text.upper()
 
 
@@ -23,7 +23,7 @@ class LowercaseMarkupFilter(MarkupFilter):
 
     title = "LowercaseFilter"
 
-    def render(self, text, **kwargs):
+    def render(self, text, **kwargs):  # noqa: ARG002 Unused argument
         return text.lower()
 
 
@@ -40,7 +40,7 @@ class CustomMarkupFilterTestCase(TestCase):
 
         # It's ready to be called
         result = formatter("This is some text", filter_name="uppercase")
-        self.assertEqual(result, "THIS IS SOME TEXT")
+        assert result == "THIS IS SOME TEXT"
 
     def test_update_filter(self):
         """
@@ -51,7 +51,7 @@ class CustomMarkupFilterTestCase(TestCase):
         # Despite its key name is still 'uppercase' we actually call the
         # LowercaseFilter.
         result = formatter("This Is Some Text", filter_name="uppercase")
-        self.assertEqual(result, "this is some text")
+        assert result == "this is some text"
 
     def test_unregister_filter(self):
         # Unregistering a filter that does not exist is simply ignored
@@ -75,11 +75,11 @@ class CustomMarkupFilterTestCase(TestCase):
         `MARKUP_FILTER_FALLBACK` setting is set.
         """
         pytest.raises(
-            UnregisteredFilterError, formatter, "This is some text", filter_name=None
+            UnregisteredFilterError, formatter, "This is some text", filter_name=None,
         )
 
         formatter.register("uppercase", UppercaseMarkupFilter)
 
         with self.settings(MARKUP_FILTER_FALLBACK="uppercase"):
             result = formatter("This is some text", filter_name=None)
-            self.assertEqual(result, "THIS IS SOME TEXT")
+            assert result == "THIS IS SOME TEXT"

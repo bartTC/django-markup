@@ -34,6 +34,10 @@ class MarkupFormatter:
             title = " ".join([w.title() for w in filter_name.split("_")])
         return title
 
+    @property
+    def registered_filter_names(self) -> list[str]:  # noqa: FA102
+        return list(self.filter_list.keys())
+
     def choices(self):
         """
         Returns the filter list as a tuple. Useful for model choices.
@@ -80,11 +84,12 @@ class MarkupFormatter:
 
         # Check that the filter_name is a registered markup filter
         if filter_name not in self.filter_list:
+            msg = (
+                f"'{filter_name}' is not a registered markup filter. "
+                f"Registered filters are: {formatter.registered_filter_names}."
+            )
             raise UnregisteredFilterError(
-                "'{}' is not a registered markup filter. Registered filters are: {}.".format(
-                    filter_name,
-                    ", ".join(self.filter_list.keys()),
-                ),
+                msg,
             )
         filter_class = self.filter_list[filter_name]
 

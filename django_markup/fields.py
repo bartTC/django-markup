@@ -1,8 +1,7 @@
-from django.core.exceptions import ImproperlyConfigured
 from django.db.models.fields import CharField
 from django.utils.translation import gettext_lazy
 
-from django_markup.markup import formatter
+from django_markup.markup import UnregisteredFilterError, formatter
 
 
 class MarkupField(CharField):
@@ -15,11 +14,12 @@ class MarkupField(CharField):
         # Check that the default value is a valid filter
         if default:
             if default not in formatter.filter_list:
-                raise ImproperlyConfigured(
-                    "'{}' is not a registered markup filter. Registered filters are: {}.".format(
-                        default,
-                        ", ".join(formatter.filter_list.keys()),
-                    ),
+                msg = (
+                    f"'{default}' is not a registered markup filter. "
+                    f"Registered filters are: {formatter.registered_filter_names}."
+                )
+                raise UnregisteredFilterError(
+                    msg,
                 )
             kwargs.setdefault("default", default)
 
