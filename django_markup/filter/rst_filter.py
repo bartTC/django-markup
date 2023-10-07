@@ -1,3 +1,5 @@
+from typing import ClassVar
+
 from django_markup.filter import MarkupFilter
 
 
@@ -15,7 +17,7 @@ class RstMarkupFilter(MarkupFilter):
 
     title = "reStructuredText"
     rst_part_name = "html_body"
-    kwargs = {
+    kwargs: ClassVar = {
         "settings_overrides": {
             "raw_enabled": False,
             "file_insertion_enabled": False,

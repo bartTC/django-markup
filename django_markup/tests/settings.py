@@ -1,6 +1,6 @@
-import os
 import random
 import string
+from pathlib import Path
 
 USE_TZ = False
 
@@ -21,7 +21,7 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
-            os.path.join(os.path.dirname(__file__), "templates"),
+            Path(__file__).parent / "templates",
         ],
         "APP_DIRS": True,
         "OPTIONS": {

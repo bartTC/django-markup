@@ -1,11 +1,12 @@
-import os
+from pathlib import Path
 
+import pytest
 from django.test import TestCase
 
-from ..markup import formatter
+from ..markup import UnregisteredFilterError, formatter
 from . import markup_strings as s
 
-FILES_DIR = os.path.join(os.path.dirname(__file__), "files")
+FILES_DIR = Path(__file__).parent / "files"
 
 
 class FormatterTestCase(TestCase):
@@ -13,12 +14,16 @@ class FormatterTestCase(TestCase):
     Test the Formatter conversion done in Python of all shipped filters.
     """
 
+    def read(self, filename: str) -> str:
+        with (FILES_DIR / filename).open("r") as f:
+            return f.read()
+
     def test_unregistered_filter_fails_loud(self):
         """
         Trying to call a unregistered filter will raise a ValueError.
         """
-        self.assertRaises(
-            ValueError,
+        pytest.raises(
+            UnregisteredFilterError,
             formatter,
             "some text",
             filter_name="does-not-exist",
@@ -67,8 +72,8 @@ class FormatterTestCase(TestCase):
 
         :see: https://github.com/bartTC/django-markup/issues/14
         """
-        text = open(os.path.join(FILES_DIR, "rst_header.txt")).read()
-        expected = open(os.path.join(FILES_DIR, "rst_header_expected.txt")).read()
+        text = self.read("rst_header.txt")
+        expected = self.read("rst_header_expected.txt")
         result = formatter(text, filter_name="restructuredtext")
         self.assertEqual(result, expected)
 
@@ -77,17 +82,15 @@ class FormatterTestCase(TestCase):
         Having Pygments installed will automatically provide a ``.. code-block``
         directive in reStructredText to highlight code snippets.
         """
-        text = open(os.path.join(FILES_DIR, "rst_with_pygments.txt")).read()
-        expected = open(
-            os.path.join(FILES_DIR, "rst_with_pygments_expected.txt"),
-        ).read()
+        text = self.read("rst_with_pygments.txt")
+        expected = self.read("rst_with_pygments_expected.txt")
         result = formatter(text, filter_name="restructuredtext")
 
         self.assertEqual(result, expected)
 
     def test_rst_raw_default(self):
         """Raw file inclusion is disabled by default."""
-        text = open(os.path.join(FILES_DIR, "rst_raw.txt")).read()
+        text = self.read("rst_raw.txt")
         result = formatter(text, filter_name="restructuredtext")
         self.assertIn("Other text", result)
         self.assertNotIn("<script>", result)
@@ -96,8 +99,7 @@ class FormatterTestCase(TestCase):
         """File inclusion is disabled by default."""
         # Build up dynamically in order to build absolute path
         text = (
-            ".. include:: "
-            + os.path.join(FILES_DIR, "rst_header.txt")
+            f".. include:: {FILES_DIR / 'rst_header.txt'!s}"  # noqa: ISC003
             + "\n\nOther text\n"
         )
         result = formatter(text, filter_name="restructuredtext")

@@ -3,6 +3,10 @@ from django.conf import settings
 from django_markup.defaults import DEFAULT_MARKUP_CHOICES, DEFAULT_MARKUP_FILTER
 
 
+class UnregisteredFilterError(ValueError):
+    pass
+
+
 class MarkupFormatter:
     def __init__(self, load_defaults=True):
         self.filter_list = {}
@@ -76,7 +80,7 @@ class MarkupFormatter:
 
         # Check that the filter_name is a registered markup filter
         if filter_name not in self.filter_list:
-            raise ValueError(
+            raise UnregisteredFilterError(
                 "'{}' is not a registered markup filter. Registered filters are: {}.".format(
                     filter_name,
                     ", ".join(self.filter_list.keys()),

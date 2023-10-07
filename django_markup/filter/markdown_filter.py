@@ -1,3 +1,5 @@
+from typing import ClassVar
+
 from django_markup.filter import MarkupFilter
 
 
@@ -7,7 +9,7 @@ class MarkdownMarkupFilter(MarkupFilter):
     """
 
     title = "Markdown"
-    kwargs = {"safe_mode": True}
+    kwargs: ClassVar = {"safe_mode": True}
 
     def render(self, text, **kwargs):
         if kwargs:

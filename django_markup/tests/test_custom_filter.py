@@ -1,7 +1,8 @@
+import pytest
 from django.test import TestCase
 
 from django_markup.filter import MarkupFilter
-from django_markup.markup import formatter
+from django_markup.markup import UnregisteredFilterError, formatter
 
 
 class UppercaseMarkupFilter(MarkupFilter):
@@ -61,8 +62,8 @@ class CustomMarkupFilterTestCase(TestCase):
         formatter.register("uppercase", UppercaseMarkupFilter)
         formatter.unregister("uppercase")
 
-        self.assertRaises(
-            ValueError,
+        pytest.raises(
+            UnregisteredFilterError,
             formatter,
             "This is some text",
             filter_name="uppercase",
@@ -73,7 +74,9 @@ class CustomMarkupFilterTestCase(TestCase):
         You can call the formatter without a `filter_name` as long as a
         `MARKUP_FILTER_FALLBACK` setting is set.
         """
-        self.assertRaises(ValueError, formatter, "This is some text", filter_name=None)
+        pytest.raises(
+            UnregisteredFilterError, formatter, "This is some text", filter_name=None
+        )
 
         formatter.register("uppercase", UppercaseMarkupFilter)
 

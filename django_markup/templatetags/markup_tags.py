@@ -8,4 +8,4 @@ register = Library()
 
 @register.filter
 def apply_markup(text, filter_name):
-    return mark_safe(formatter(text, filter_name))
+    return mark_safe(formatter(text, filter_name))  # noqa: S308
