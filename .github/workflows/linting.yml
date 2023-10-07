@@ -1,4 +1,4 @@
-name: Code Linting
+name: Code Quality Checks
 
 on:
   push:
