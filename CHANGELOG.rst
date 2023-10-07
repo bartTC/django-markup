@@ -1,6 +1,12 @@
 Changelog
 =========
 
+v1.8.1 (2023-10-07):
+--------------------
+
+- Remove all annotations for "Self". It would require an additional dependency for
+  installations on Python <3.11 and that's not worth it.
+
 v1.8 (2023-10-07):
 ------------------
 
