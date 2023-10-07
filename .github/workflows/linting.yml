@@ -1,0 +1,27 @@
+name: Code Linting
+
+on:
+  push:
+
+jobs:
+  linting:
+    name: Code Quality Checks
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: pip install "black==23.9.1" "ruff==0.0.292 mypy==1.5.1"
+
+      - name: Code Linting
+        if: always()
+        run: ruff django_markup
+
+      - name: Code Formatting
+        if: always()
+        run: black --check django_markup
+
+      - name: Type Check
+        if: always()
+        run: mypu django_markup
