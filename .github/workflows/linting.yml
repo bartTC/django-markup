@@ -24,4 +24,4 @@ jobs:
 
       - name: Type Check
         if: always()
-        run: mypu django_markup
+        run: mypy django_markup
