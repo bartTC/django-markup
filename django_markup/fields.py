@@ -16,7 +16,7 @@ class MarkupField(CharField):
 
     def __init__(
         self,
-        default: bool = False,
+        default: str | None = None,
         formatter: MarkupFormatter = formatter,
         *args: Any,
         **kwargs: Any,

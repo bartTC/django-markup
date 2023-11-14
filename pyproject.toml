@@ -8,11 +8,11 @@ target-version = "py38"
 exclude = ["migrations"]
 select = ["ALL"]
 ignore = [
+  "ANN101",   # Missing Type Annotation for "self"
   "ANN401",   # Dynamically typed expressions (typing.Any) are disallowed in `**kwargs`"
   "D",        # Missing or badly formatted docstrings
   "FBT",      # Flake Boolean Trap (don't use arg=True in functions)
   "S101",     # Use of `assert` detected
-  "ANN101",   # Missing Type Annotation for "self"
 ]
 
 [tool.mypy]
