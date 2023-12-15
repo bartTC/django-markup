@@ -9,7 +9,7 @@ class CreoleMarkupFilter(MarkupFilter):
     def render(
         self,
         text: str,
-        **kwargs: Any,  # noqa: ARG002 Unused argument
+        **kwargs: Any,  # Unused argument
     ) -> str:
         from creole import creole2html
 

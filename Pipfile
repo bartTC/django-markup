@@ -18,7 +18,7 @@ ruff = "*"
 typing-extensions = "*"
 
 [scripts]
-cleanup = "sh -c 'ruff --fix --exit-zero django_markup && black django_markup'"
+cleanup = "sh -c 'ruff --fix --exit-zero django_markup && ruff format django_markup'"
 test = "pytest"
 
 [pipenv]

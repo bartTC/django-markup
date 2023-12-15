@@ -1,8 +1,3 @@
-[tool.black]
-target-version = ['py311']
-include = '\.pyi?$'
-exclude = "migrations"
-
 [tool.ruff]
 target-version = "py38"
 exclude = ["migrations"]
@@ -10,10 +5,23 @@ select = ["ALL"]
 ignore = [
   "ANN101",   # Missing Type Annotation for "self"
   "ANN401",   # Dynamically typed expressions (typing.Any) are disallowed in `**kwargs`"
+  "ARG001",   # Unused function argument (request, ...)
+  "ARG002",   # Unused method argument (*args, **kwargs)
   "D",        # Missing or badly formatted docstrings
   "FBT",      # Flake Boolean Trap (don't use arg=True in functions)
-  "S101",     # Use of `assert` detected
+  "RUF012",   # Mutable class attributes https://github.com/astral-sh/ruff/issues/5243
+
+  "COM812",   # (ruff format) Checks for the absence of trailing commas
+  "ISC001",   # (ruff format) Checks for implicitly concatenated strings on a single line
 ]
+
+[tool.ruff.extend-per-file-ignores]
+# Also ignore `E402` in all `__init__.py` files.
+"test_*.py" = [
+  "S101",     # S101 Use of `assert` detected
+  "PLR2004",  # Magic value used in comparison,
+]
+
 
 [tool.mypy]
 check_untyped_defs = true

@@ -12,6 +12,6 @@ class MarkupFilter:
     def render(
         self,
         text: str,
-        **kwargs: Any,  # noqa: ARG002 Unused argument
+        **kwargs: Any,  # Unused argument
     ) -> str:
         return text

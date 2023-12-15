@@ -15,7 +15,7 @@ class UnregisteredFilterError(ValueError):
 
 
 class MarkupFormatter:
-    filter_list: dict[str, type[MarkupFilter]] = {}  # noqa: RUF012
+    filter_list: dict[str, type[MarkupFilter]] = {}
 
     def __init__(self, load_defaults: bool = True) -> None:
         if load_defaults:

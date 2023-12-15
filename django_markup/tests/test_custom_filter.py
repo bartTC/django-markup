@@ -19,7 +19,7 @@ class UppercaseMarkupFilter(MarkupFilter):
     def render(
         self,
         text: str,
-        **kwargs: Any,  # noqa: ARG002 Unused argument
+        **kwargs: Any,  # Unused argument
     ) -> str:
         return text.upper()
 
@@ -34,7 +34,7 @@ class LowercaseMarkupFilter(MarkupFilter):
     def render(
         self,
         text: str,
-        **kwargs: Any,  # noqa: ARG002 Unused argument
+        **kwargs: Any,  # Unused argument
     ) -> str:
         return text.lower()
 
