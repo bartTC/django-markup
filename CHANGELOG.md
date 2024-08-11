@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.9 (wip):
+## v1.9 (2024-08-11):
 
 - Minor Type Annotation fixes.
 - Switch from pipenv to Poetry.
