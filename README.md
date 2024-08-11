@@ -24,7 +24,8 @@ Py/Dj     3.8 3.9 3.10 3.11 3.12
 4.0        ✓   ✓   ✓    ✓    ✓
 4.1        ✓   ✓   ✓    ✓    ✓
 4.2 (LTS)  ✓   ✓   ✓    ✓    ✓
-5.0        —   —   ✓    ✓    ✓
+| 5.0 | — | — | ✓ | ✓ | ✓ |
+| 5.1 | — | — | ✓ | ✓ | ✓ |
 ========= === === ==== ==== ====
 
 Quickstart
@@ -32,7 +33,34 @@ Quickstart
 
 Download and install the package from the python package index (pypi)::
 
-    $ pip install django-markup
+    $ pip install django-markup![pypi version](https://img.shields.io/pypi/v/django-markup.svg)
+![github actions status](https://github.com/bartTC/django-markup/actions/workflows/push.yml/badge.svg?branch=main)
+
+[![PyPi version](https://img.shields.io/pypi/v/django-markup.svg)](https://pypi.org/project/django-markup/)
+[![GitHub Actions status](https://github.com/bartTC/django-markup/actions/workflows/push.yml/badge.svg?branch=main)](https://github.com/bartTC/django-markup/actions)
+
+---
+
+📖 Full documentation on https://django-markup.readthedocs.io/en/latest/
+
+# django-markup
+
+This app is a generic way to provide filters that convert text into html.
+
+## Compatibility Matrix
+
+| Py/Dj     | 3.8 | 3.9 | 3.10 | 3.11 | 3.12 |
+|-----------|-----|-----|------|------|------|
+| 3.2 (LTS) | ✓   | ✓   | ✓    | ✓    | ✓    |
+| 4.0       | ✓   | ✓   | ✓    | ✓    | ✓    |
+| 4.1       | ✓   | ✓   | ✓    | ✓    | ✓    |
+| 4.2 (LTS) | ✓   | ✓   | ✓    | ✓    | ✓    |
+| 5.0       | —   | —   | ✓    | ✓    | ✓    |
+| 5.1       | —   | —   | ✓    | ✓    | ✓    |
+
+## Quickstart
+
+Download and install the package from the python package index (pypi):
 
 Note that `django-markup` ships with some filters ready to use, but the more
 complex packages such as Markdown or ReStructuredText are not part of the code.

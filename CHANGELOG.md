@@ -1,10 +1,12 @@
 Changelog
 =========
 
-v1.8.2 (wip):
--------------
+v1.9 (wip):
+-----------
 
 - Minor Type Annotation fixes.
+- Switch from pipenv to Poetry.
+- Added support for Django 5.1.
 
 v1.8.1 (2023-10-07):
 --------------------
