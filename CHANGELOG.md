@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.9.1 (2024-11-19):
+
+- Drop support for Python <= 3.8.
+- Drop support for Django <= 4.1.
+- Added support for Python 3.13.
+
 ## v1.9 (2024-08-11):
 
 - Minor Type Annotation fixes.
