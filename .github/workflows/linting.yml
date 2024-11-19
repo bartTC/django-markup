@@ -12,16 +12,13 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install Dependencies
-        run: pip install "black==23.9.1" "ruff==0.0.292" "mypy==1.5.1"
+        run: pip install "ruff" "mypy==1.5.1"
 
       - name: Code Linting
-        if: always()
-        run: ruff django_markup
+        run: ruff check django_markup
 
       - name: Code Formatting
-        if: always()
-        run: black --check django_markup
+        run: ruff format --check django_markup
 
       - name: Type Check
-        if: always()
         run: mypy --install-types --non-interactive django_markup
