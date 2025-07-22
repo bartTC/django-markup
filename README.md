@@ -13,6 +13,7 @@ This app is a generic way to provide filters that convert text into html.
 | 4.2 (LTS) | ✓   | ✓    | ✓    | ✓    | ✓    |
 | 5.0       | —   | ✓    | ✓    | ✓    | ✓    |
 | 5.1       | —   | ✓    | ✓    | ✓    | ✓    |
+| 5.2 (LTS) | —   | ✓    | ✓    | ✓    | ✓    |
 
 ## Quickstart
 

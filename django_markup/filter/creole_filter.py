@@ -11,6 +11,6 @@ class CreoleMarkupFilter(MarkupFilter):
         text: str,
         **kwargs: Any,  # Unused argument
     ) -> str:
-        from creole import creole2html
+        from creole import creole2html  # noqa: PLC0415
 
         return creole2html(text)

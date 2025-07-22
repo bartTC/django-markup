@@ -31,7 +31,7 @@ class RstMarkupFilter(MarkupFilter):
     ) -> str:
         if kwargs:
             self.kwargs.update(kwargs)
-        from docutils import core
+        from docutils import core  # noqa: PLC0415
 
         publish_args = {"source": text, "writer_name": "html4css1"}
         publish_args.update(**self.kwargs)

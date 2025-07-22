@@ -1,5 +1,9 @@
 # Changelog
 
+## WIP
+
+- Added support for Django 5.2.
+
 ## v1.9.1 (2024-11-19):
 
 - Drop support for Python <= 3.8.

@@ -4,7 +4,7 @@ from pathlib import Path
 
 USE_TZ = False
 
-SECRET_KEY = "".join(random.sample(string.printable, 20))
+SECRET_KEY = "".join(random.sample(list(string.printable), 20))
 
 DATABASES = {
     "default": {

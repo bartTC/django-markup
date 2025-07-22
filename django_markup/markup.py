@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, ClassVar
 
 from django.conf import settings
 
@@ -15,7 +15,7 @@ class UnregisteredFilterError(ValueError):
 
 
 class MarkupFormatter:
-    filter_list: dict[str, type[MarkupFilter]] = {}
+    filter_list: ClassVar[dict[str, type[MarkupFilter]]] = {}
 
     def __init__(self, load_defaults: bool = True) -> None:
         if load_defaults:

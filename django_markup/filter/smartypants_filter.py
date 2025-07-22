@@ -11,6 +11,6 @@ class SmartyPantsMarkupFilter(MarkupFilter):
         text: str,
         **kwargs: Any,  # Unused argument
     ) -> str:
-        from smartypants import smartypants
+        from smartypants import smartypants  # noqa: PLC0415
 
         return smartypants(text, **kwargs)

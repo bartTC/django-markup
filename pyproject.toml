@@ -22,6 +22,7 @@ classifiers = [
     "Framework :: Django :: 4.2",
     "Framework :: Django :: 5.0",
     "Framework :: Django :: 5.1",
+    "Framework :: Django :: 5.2",
     "Intended Audience :: Developers",
     "Operating System :: OS Independent",
     "Programming Language :: Python",
@@ -58,13 +59,11 @@ target-version = "py38"
 exclude = ["migrations"]
 lint.select = ["ALL"]
 lint.ignore = [
-  "ANN101",   # Missing Type Annotation for "self"
   "ANN401",   # Dynamically typed expressions (typing.Any) are disallowed in `**kwargs`"
   "ARG001",   # Unused function argument (request, ...)
   "ARG002",   # Unused method argument (*args, **kwargs)
   "D",        # Missing or badly formatted docstrings
   "FBT",      # Flake Boolean Trap (don't use arg=True in functions)
-  "RUF012",   # Mutable class attributes https://github.com/astral-sh/ruff/issues/5243
 
   "COM812",   # (ruff format) Checks for the absence of trailing commas
   "ISC001",   # (ruff format) Checks for implicitly concatenated strings on a single line
@@ -86,6 +85,9 @@ warn_unused_ignores = true
 warn_redundant_casts = true
 warn_unused_configs = true
 exclude = ".*/migrations/.*"
+
+[tool.ty.rules]
+unresolved-import = "ignore"
 
 [tool.pytest.ini_options]
 python_files = [
@@ -111,3 +113,4 @@ report.exclude_lines = [
     "pragma: no cover",
     "if TYPE_CHECKING:",
 ]
+

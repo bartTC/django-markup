@@ -19,7 +19,7 @@ class MarkdownMarkupFilter(MarkupFilter):
         if kwargs:
             self.kwargs.update(kwargs)
 
-        from markdown import markdown
+        from markdown import markdown  # noqa: PLC0415
 
         text = markdown(text, **self.kwargs)
 
@@ -27,7 +27,7 @@ class MarkdownMarkupFilter(MarkupFilter):
         # to keep it backwards compatible.
         # Https://python-markdown.github.io/change_log/release-2.6/#safe_mode-deprecated
         if self.kwargs.get("safe_mode") is True:
-            from bleach import clean
+            from bleach import clean  # noqa: PLC0415
 
             # fmt: off
             markdown_tags = [
