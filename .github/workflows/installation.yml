@@ -1,0 +1,39 @@
+name: Installation Test
+
+on:
+  schedule:
+    # Run the workflow once per week, e.g., every Monday at 00:00
+    - cron: "0 0 * * 1"
+
+jobs:
+  test-pypi:
+    name: Test Package Installation
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [ '3.9', '3.10', '3.11', '3.12', '3.13' ]
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install with all_filter_dependencies
+        run: |
+          pip install ".[all_filter_dependencies]"
+
+      - name: Test installation with extras
+        run: |
+          python -c "
+          import django_markup
+          import textile
+          import smartypants
+          import docutils
+          import pygments
+          import markdown
+          import bleach
+          "
