@@ -1,8 +1,14 @@
 # Changelog
 
-## WIP
+## v1.10 (2025-07-27)
 
 - Added support for Django 5.2.
+- Fix `django-markup[all_filter_dependencies]` group setup.
+- Switched the testing framework from tox to nox.
+
+Backwards incompatible changes:
+
+- Removed CreoleParser markup due to upstream errors.
 
 ## v1.9.1 (2024-11-19):
 
