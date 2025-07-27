@@ -14,7 +14,7 @@ DJANGO_VERSIONS = {
 
 # Define which Python versions can be used with which Django versions
 DJANGO_PYTHON_COMPATIBILITY = {
-    "django-32": ["3.9", "3.10", "3.11", "3.12", "3.13"],
+    "django-32": ["3.9", "3.10", "3.11", "3.12"],
     "django-42": ["3.9", "3.10", "3.11", "3.12", "3.13"],
     "django-50": ["3.10", "3.11", "3.12", "3.13"],
     "django-51": ["3.10", "3.11", "3.12", "3.13"],
