@@ -10,6 +10,7 @@ This app is a generic way to provide filters that convert text into html.
 
 | Py/Dj     | 3.9 | 3.10 | 3.11 | 3.12 | 3.13 |
 |-----------|-----|------|------|------|------|
+| 3.2       | ✓   | ✓    | ✓    | ✓    | —    |
 | 4.2 (LTS) | ✓   | ✓    | ✓    | ✓    | ✓    |
 | 5.0       | —   | ✓    | ✓    | ✓    | ✓    |
 | 5.1       | —   | ✓    | ✓    | ✓    | ✓    |
