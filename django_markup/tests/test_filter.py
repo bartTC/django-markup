@@ -109,11 +109,6 @@ class FormatterTestCase(TestCase):
         assert "Other text" in result
         assert "Header 1" not in result
 
-    def test_creole_filter(self) -> None:
-        text, expected = s.CREOLE
-        result = formatter(text, filter_name="creole")
-        assert result == expected
-
     def test_smartypants_filter(self) -> None:
         text, expected = s.SMARTYPANTS
         result = formatter(text, filter_name="smartypants")

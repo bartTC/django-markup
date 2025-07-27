@@ -1,5 +1,4 @@
 # The list of automatically loaded MarkupFilters
-from django_markup.filter.creole_filter import CreoleMarkupFilter
 from django_markup.filter.linebreaks_filter import LinebreaksMarkupFilter
 from django_markup.filter.markdown_filter import MarkdownMarkupFilter
 from django_markup.filter.none_filter import NoneMarkupFilter
@@ -12,7 +11,6 @@ from django_markup.filter.widont_filter import WidontMarkupFilter
 # You can override this list within your settings: MARKUP_FILTER
 
 DEFAULT_MARKUP_FILTER = {
-    "creole": CreoleMarkupFilter,
     "linebreaks": LinebreaksMarkupFilter,
     "markdown": MarkdownMarkupFilter,
     "none": NoneMarkupFilter,
