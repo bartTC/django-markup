@@ -14,17 +14,14 @@ jobs:
         python-version: [ '3.9', '3.10', '3.11', '3.12', '3.13' ]
     
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install with all_filter_dependencies
+      - name: Install with from pypi all_filter_dependencies
         run: |
-          pip install ".[all_filter_dependencies]"
+          pip install "django-markup[all_filter_dependencies]"
 
       - name: Test installation with extras
         run: |
