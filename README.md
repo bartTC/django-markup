@@ -49,8 +49,8 @@ Or in Python code:
 
 To run the testsuite install the project with pipenv and run it:
 
-    % pipenv install --dev
-    $ pipenv run test
+    % poetry  install --with dev -E all_filter_dependencies
+    $ poetry run pytest
 
 You can also test against a variation of Django and Python versions
 using tox:

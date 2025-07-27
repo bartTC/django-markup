@@ -1,18 +1,18 @@
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core>=2"]
 build-backend = "poetry.core.masonry.api"
 
-[tool.poetry]
+[project]
 name = "django-markup"
-version = "1.9.1"
+version = "1.10"
 description = "A generic Django application to convert text with specific markup to html."
-authors = ["Martin Mahner <martin@mahner.org>"]
+authors = [{ name = "Martin Mahner", email = "martin@mahner.org" }]
 license = "MIT"
-readme = ["README.md", "CHANGELOG.md"]
 homepage = "https://github.com/bartTC/django-markup/"
+repository = "https://github.com/bartTC/django-markup/"
 classifiers = [
-	"Development Status :: 6 - Mature",
-	"Programming Language :: Python :: 3 :: Only",
+    "Development Status :: 6 - Mature",
+    "Programming Language :: Python :: 3 :: Only",
     "Environment :: Other Environment",
     "Environment :: Web Environment",
     "Framework :: Django",
@@ -34,17 +34,23 @@ classifiers = [
     "Topic :: Internet :: WWW/HTTP",
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
+requires-python = ">=3.8"
+dependencies = [
+    "django>=3.2"
+]
 
-[tool.poetry.dependencies]
-python = "^3.8"
-django = ">=3.2"
-textile = {version = ">=2.3.16", extras = ["all_filter_dependencies"]}
-smartypants = {version = ">=2.0.0", extras = ["all_filter_dependencies"]}
-docutils = {version = ">=0.14", extras = ["all_filter_dependencies"]}
-pygments = {version = ">=2.10.0", extras = ["all_filter_dependencies"]}
-markdown = {version = ">=2.6.9", extras = ["all_filter_dependencies"]}
-bleach = {version = ">=3.0", extras = ["all_filter_dependencies"]}
-python-creole = {version = ">=1.3.1", extras = ["all_filter_dependencies"]}
+[project.optional-dependencies]
+all_filter_dependencies = [
+    "textile>=2.3.16",
+    "smartypants>=2.0.0",
+    "docutils>=0.14",
+    "pygments>=2.10.0",
+    "markdown>=2.6.9",
+    "bleach>=3.0",
+]
+
+[tool.poetry]
+readme = ["README.md", "CHANGELOG.md"]
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.3.5"
@@ -55,24 +61,24 @@ typing-extensions = "^4.11.0"
 coverage = "^7.4.4"
 
 [tool.ruff]
-target-version = "py38"
+target-version = ["py38", "py39", "py310", "py311", "312", "313"]
 exclude = ["migrations"]
 lint.select = ["ALL"]
 lint.ignore = [
-  "ANN401",   # Dynamically typed expressions (typing.Any) are disallowed in `**kwargs`"
-  "ARG001",   # Unused function argument (request, ...)
-  "ARG002",   # Unused method argument (*args, **kwargs)
-  "D",        # Missing or badly formatted docstrings
-  "FBT",      # Flake Boolean Trap (don't use arg=True in functions)
+    "ANN401", # Dynamically typed expressions (typing.Any) are disallowed in `**kwargs`"
+    "ARG001", # Unused function argument (request, ...)
+    "ARG002", # Unused method argument (*args, **kwargs)
+    "D", # Missing or badly formatted docstrings
+    "FBT", # Flake Boolean Trap (don't use arg=True in functions)
 
-  "COM812",   # (ruff format) Checks for the absence of trailing commas
-  "ISC001",   # (ruff format) Checks for implicitly concatenated strings on a single line
+    "COM812", # (ruff format) Checks for the absence of trailing commas
+    "ISC001", # (ruff format) Checks for implicitly concatenated strings on a single line
 ]
 
 [tool.ruff.lint.extend-per-file-ignores]
 "test_*.py" = [
-  "S101",     # S101 Use of `assert` detected
-  "PLR2004",  # Magic value used in comparison,
+    "S101", # S101 Use of `assert` detected
+    "PLR2004", # Magic value used in comparison,
 ]
 
 
@@ -90,11 +96,6 @@ exclude = ".*/migrations/.*"
 unresolved-import = "ignore"
 
 [tool.pytest.ini_options]
-python_files = [
-  "tests.py",
-  "test_*.py",
-  "*_tests.py",
-]
 addopts = """
     --ds=django_markup.tests.settings
     --cov=./django_markup
@@ -107,7 +108,7 @@ filterwarnings = ["ignore::RuntimeWarning"]
 
 [tool.coverage]
 run.omit = [
-  "django_markup/tests/*",
+    "django_markup/tests/*",
 ]
 report.exclude_lines = [
     "pragma: no cover",
