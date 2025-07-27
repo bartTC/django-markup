@@ -33,7 +33,7 @@ class RstMarkupFilter(MarkupFilter):
             self.kwargs.update(kwargs)
         from docutils import core  # noqa: PLC0415
 
-        publish_args = {"source": text, "writer_name": "html4css1"}
+        publish_args: dict[str, Any] = {"source": text, "writer_name": "html4css1"}
         publish_args.update(**self.kwargs)
         parts = core.publish_parts(**publish_args)
-        return parts[self.rst_part_name]
+        return parts[self.rst_part_name]  # type: ignore  # noqa: PGH003
