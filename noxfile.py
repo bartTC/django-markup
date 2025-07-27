@@ -39,7 +39,6 @@ def tests(session: nox.sessions.Session, django: str) -> None:
     session.env["DJANGO_SETTINGS_MODULE"] = "django_markup.tests.settings"
 
     # Install dependencies
-    session.install("poetry-core>=2")
     session.install("pytest", "pytest-django", "pytest-cov")
     session.install(DJANGO_VERSIONS[django])
 
